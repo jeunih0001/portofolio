@@ -12,6 +12,20 @@ const config: Config = {
       padding: '1rem',
     },
     extend: {
+      animation: {
+        enter_opacity: 'enter_opacity 200ms linear forwards',
+        enter_y: 'enter_y 200ms linear forwards',
+      },
+      keyframes: {
+        enter_opacity: {
+          '0%': {opacity: '0'},
+          '100%': {opacity: '1'},
+        },
+        enter_y: {
+          '0%': {opacity: '0' , transform: 'translateY(-20px)'},
+          '100%': {opacity: '1', transform: 'translateY(0)'},
+        }
+      },
       fontFamily: {
         special: ['var(--font-anton)']
       },
