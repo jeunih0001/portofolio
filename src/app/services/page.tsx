@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer';
 import React from 'react'
 
 const services = [
@@ -53,9 +54,7 @@ export default function Services() {
         )}
       </div>
     </div>
-    <footer className='mt-20 border-t'>
-        <div className='font-special text-lg text-center py-6'>Jeunih</div>
-    </footer>
+    <Footer />
     </>
   )
 }
