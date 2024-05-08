@@ -33,7 +33,7 @@ export default function Services() {
       </div>
       <div className='grid lg:grid-cols-3 gap-8'>
         {services.map((service, index) =>
-          <section key={index} className='border border-slate-200 shadow-sm px-12 py-16 grid relative before:pointer-events-none before:border-[inherit] before:inset-4 before:z-10 before:content-[""] before:absolute before:border after:absolute after:aspect-square after:right-0 after:rounded-full after:translate-x-1/2 after:scale-150 hover:after:scale-[10] after:transition-all after:duration-1000 after:-translate-y-1/2 hover:after:bg-black  group overflow-hidden after:w-32'>
+          <section key={index} className='border border-slate-300 shadow-sm px-12 py-16 grid relative before:pointer-events-none before:border-[inherit] before:inset-4 before:z-10 before:content-[""] before:absolute before:border after:absolute after:aspect-square after:right-0 after:rounded-full after:translate-x-1/2 after:scale-150 hover:after:scale-[10] after:transition-all after:duration-1000 after:-translate-y-1/2 hover:after:bg-black  group overflow-hidden after:w-32'>
             <div className='relative z-10 grid'>
               <h2 className='font-bold text-2xl group-hover:text-slate-50 transition-colors font-special tracking-wider my-4'>{service.title}</h2>
               <p className='text-slate-500 group-hover:text-slate-300 transition-colors'>{service.description}</p>
