@@ -1,9 +1,15 @@
 "use client"
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 
 export const ResponsiveNavbar = () => {
   const [open,setOpen] = useState<boolean>(false)
+  const path = usePathname()
+
+  useEffect(()=>{
+    setOpen(false)
+  },[path])
   return (
     <div>
       <button onClick={()=>setOpen(true)} className='p-2 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors'>
