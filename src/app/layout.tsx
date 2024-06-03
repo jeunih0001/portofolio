@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${inter.className} antialiased`} suppressHydrationWarning>
+      <body className={`${anton.variable} ${inter.className} antialiased text-slate-50`} suppressHydrationWarning>
         <div>
 
         </div>

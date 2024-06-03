@@ -50,7 +50,7 @@ export const ContactForm = () => {
         <div className='grid gap-2'>
           <label className='font-medium' htmlFor="name">Name</label>
           <input
-            className='p-2 rounded-md bg-slate-50 border-2 transition-all outline-none focus:border-yellow-300'
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             type="text"
             name="name"
             id="name"
@@ -60,7 +60,7 @@ export const ContactForm = () => {
         <div className='grid gap-2'>
           <label className='font-medium' htmlFor="email">Email</label>
           <input
-            className='p-2 rounded-md bg-slate-50 border-2 transition-all outline-none focus:border-yellow-300'
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             type="email"
             name="email"
             id="email"
@@ -70,7 +70,7 @@ export const ContactForm = () => {
         <div className='grid gap-2'>
           <label className='font-medium' htmlFor="message">Message</label>
           <textarea
-            className='p-2 rounded-md bg-slate-50 border-2 transition-all outline-none focus:border-yellow-300'
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             name="message"
             id="message" />
           {state.errors.message && <p className='text-sm font-medium text-red-400'>{state.errors.message}</p>}

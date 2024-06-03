@@ -2,7 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --background: 231 61% 21%;
+  --background-foreground: 204 47% 28%;
+  --background-foreground: 204 47% 28%;
 
+}
+
+@layer base{
+  body{
+    background-image: linear-gradient(
+      rgb(21, 31, 87),rgb(38, 78, 105)
+    );
+  }
+}
 
 @layer utilities {
   .text-balance {
@@ -12,4 +25,5 @@
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px;
   }
+
 }
