@@ -34,28 +34,28 @@ export default function Blogs() {
 }
 
 
-export const MainCard = () => {
+const MainCard = () => {
   return (
-    <div className='space-y-2'>
+    <div className='space-y-4'>
       <figure>
         <Image
           width={0}
           height={0}
           alt='blog image'
-          className='w-full aspect-video'
+          className='w-full aspect-video bg-muted'
           src={'https://source.unsplash.com/random/1280x720/?tech'}
         />
       </figure>
-      <div className='space-y-2'>
-        <span className='font-medium text-muted'>14/9/2024</span>
-        <h2 className='text-xl font-bold'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h2>
-        <p className='text-muted'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptatem autem perspiciatis ipsam ratione dicta?</p>
+      <div className='grid'>
+        <span className='text-sm font-medium text-muted'>14/9/2024</span>
+        <h2 className='font-bold text-sm md:text-xl mb-2'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid commodi doloribus nesciunt, repudiandae ipsa atque.</p>
       </div>
     </div>
   )
 
 }
-export const SplitCard = () => {
+const SplitCard = () => {
   return (
     <div className='grid grid-cols-[1fr,2fr] gap-3 items-start'>
       <figure className='min-w-24'>
@@ -63,7 +63,7 @@ export const SplitCard = () => {
           width={0}
           height={0}
           alt='blog image'
-          className='w-full aspect-video'
+          className='w-full aspect-video bg-muted'
           src={'https://source.unsplash.com/random/1280x720/?tech'}
         />
       </figure>
