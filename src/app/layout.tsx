@@ -1,9 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import type { Metadata } from "next";
 import './globals.css'
-import { Anton, Inter } from "next/font/google";
+import { Anton, Poppins as FontSans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({ subsets: ["latin"] , weight: ['300','400','500','700','900'] });
 
 const anton = Anton({weight: '400', subsets: ['latin'] , variable: '--font-anton'})
 
@@ -19,14 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${inter.className} antialiased text-slate-50`} suppressHydrationWarning>
-        <div>
-
-        </div>
-        <div>
-          <Navbar />
-          {children}
-        </div>
+      <body className={`${anton.variable} ${fontSans.className} antialiased text-foreground`} suppressHydrationWarning>
+          <div>
+            <Navbar />
+            {children}
+          </div>
       </body>
     </html>
 

@@ -4,17 +4,36 @@
 
 :root{
   --background: 231 61% 21%;
-  --background-foreground: 204 47% 28%;
-  --background-foreground: 204 47% 28%;
+  --foreground: 0 0% 96%;
+  --muted: 0 0% 40%;
+  --foreground-overlay: 0 0% 1%;
+  --primary: 204 47% 28%;
 
 }
 
 @layer base{
-  body{
-    background-image: linear-gradient(
-      rgb(21, 31, 87),rgb(38, 78, 105)
-    );
-  }
+  body {
+    background-image: 
+        repeating-linear-gradient(
+            135deg,
+            rgb(255, 255, 255 ,0) 0px,
+            rgb(255, 255, 255 ,0.2) 2px,
+            transparent 2px,
+            transparent 15%
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgb(255, 255, 255 ,0) 0px,
+            rgb(255, 255, 255 ,0.2) 2px,
+            transparent 2px,
+            transparent 15%
+        ),
+        radial-gradient(
+          rgb(21, 31, 87),
+          rgb(21, 31, 87)
+      );
+}
+
 }
 
 @layer utilities {
@@ -24,6 +43,9 @@
   .text-shadow {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px;
+  }
+  .hover_underline{
+    @apply relative before:content-[''] hover:before:w-full before:transition-all before:absolute before:w-0 before:h-0.5 before:duration-300 before:bg-foreground before:left-0 before:bottom-0 before:right-0 before:mx-auto
   }
 
 }

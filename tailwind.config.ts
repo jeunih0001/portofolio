@@ -12,6 +12,13 @@ const config: Config = {
       padding: '1rem',
     },
     extend: {
+      colors: {
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        muted: 'hsl(var(--muted) / <alpha-value>)',
+        'foreground-overlay': 'hsl(var(--foreground-overlay) / <alpha-value>)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
+      },
       animation: {
         enter_opacity: 'enter_opacity 200ms linear forwards',
         enter_y: 'enter_y 200ms linear forwards',
