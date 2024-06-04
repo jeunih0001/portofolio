@@ -48,8 +48,8 @@ const MainCard = () => {
       </figure>
       <div className='grid'>
         <span className='text-sm font-medium text-muted'>14/9/2024</span>
-        <h2 className='font-bold text-sm md:text-xl mb-2'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid commodi doloribus nesciunt, repudiandae ipsa atque.</p>
+        <h3 className='font-bold md:text-xl mb-2'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h3>
+        <p className='text-sm md:text-base'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid commodi doloribus nesciunt, repudiandae ipsa atque.</p>
       </div>
     </div>
   )
@@ -69,7 +69,7 @@ const SplitCard = () => {
       </figure>
       <div className='grid'>
         <span className='text-sm font-medium text-muted'>14/9/2024</span>
-        <h2 className='font-bold text-sm md:text-lg'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h2>
+        <h3 className='font-bold text-sm md:text-lg'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h3>
       </div>
     </div>
   )

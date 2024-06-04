@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { NAVLINKS } from './Navbar'
 
 export const ResponsiveNavbar = () => {
   const [open,setOpen] = useState<boolean>(false)
@@ -20,12 +21,12 @@ export const ResponsiveNavbar = () => {
       {open && <>
       <div onClick={()=>setOpen(false)} className='fixed inset-0 bg-black/10 animate-enter_opacity'></div>
       <div className='fixed mt-navbar inset-0 mx-auto px-4 max-w-96 h-fit animate-enter_y '>
-        <div className='bg-white px-4 py-6 rounded-lg'>
+        <div className='bg-foreground text-foreground-overlay px-4 py-6 rounded-lg'>
           <div className='grid gap-4'>
-            <Link className='capitalize font-medium tracking-wider border-b border-transparent hover:border-black inline-flex px-4 py-2' href={'/'}>Home</Link>
-            <Link className='capitalize font-medium tracking-wider border-b border-transparent hover:border-black inline-flex px-4 py-2' href={'services'}>Services</Link>
-            <Link className='capitalize font-medium tracking-wider border-b border-transparent hover:border-black inline-flex px-4 py-2' href={'projects'}>Projects</Link>
-            <Link className='capitalize tracking-wide group px-4 hover:px-6 hover:shadow-xl font-medium transition-all py-4 bg-black text-slate-50 rounded-md inline-flex justify-center' href={'contact'}>Get in touch</Link>
+            {NAVLINKS.map(link => 
+              <Link key={link.name} className='capitalize font-medium tracking-wider border-b border-transparent hover:border-primary inline-flex px-4 py-2' href={link.href}>{link.name}</Link>
+            )}
+           <Link className='capitalize tracking-wide group px-4 hover:bg-yellow-600 hover:shadow-xl font-medium transition-all py-4 bg-yellow-500 text-slate-50 rounded-md inline-flex justify-center' href={'contact'}>Get in touch</Link>
           </div>
         </div>
       </div>
