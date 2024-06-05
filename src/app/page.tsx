@@ -1,9 +1,14 @@
+import { Navbar } from '@/components/Navbar'
 import Link from 'next/link'
 import React from 'react'
 
 export default function Home() {
   return (
-    <div className='pt-navbar h-dvh grid content-center text-center px-4'>
+    <>
+    <header>
+      <Navbar className='absolute w-full'/>
+    </header>
+    <main className='pt-navbar h-dvh grid content-center text-center px-4'>
       <p className='text-lg  font-medium'>👋, I am Jean Eudes</p>
       <h1 className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></h1>
       <div className='justify-center ma'>
@@ -11,6 +16,7 @@ export default function Home() {
           Let&apos;s work together 👌 
         </Link>
       </div>
-    </div>
+    </main>
+    </>
   )
 }

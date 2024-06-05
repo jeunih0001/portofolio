@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root{
-  --background: 231 61% 21%;
-  --foreground: 0 0% 96%;
+  --background: 0 0% 7%;
+  --foreground: 0 0% 99%;
   --muted: 0 0% 40%;
   --foreground-overlay: 0 0% 1%;
   --primary: 204 47% 28%;
@@ -13,25 +13,11 @@
 
 @layer base{
   body {
-    background-image: 
-        repeating-linear-gradient(
-            135deg,
-            rgb(255, 255, 255 ,0) 0px,
-            rgb(255, 255, 255 ,0.2) 2px,
-            transparent 2px,
-            transparent 15%
-        ),
-        repeating-linear-gradient(
-            45deg,
-            rgb(255, 255, 255 ,0) 0px,
-            rgb(255, 255, 255 ,0.2) 2px,
-            transparent 2px,
-            transparent 15%
-        ),
-        radial-gradient(
-          rgb(21, 31, 87),
-          rgb(21, 31, 87)
-      );
+    background-image: url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg');
+    background-color: #121212;
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 }

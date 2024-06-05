@@ -20,10 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${anton.variable} ${fontSans.className} antialiased text-foreground`} suppressHydrationWarning>
-          <div>
-            <Navbar />
-            {children}
-          </div>
+        {children}
       </body>
     </html>
 

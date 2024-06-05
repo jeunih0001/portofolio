@@ -16,11 +16,10 @@ export const NAVLINKS = [
   },
 ]
 
-export const Navbar = () => {
-
+export const Navbar = ({className}: {className?: string}) => {
   return (
-    <nav className={`flex items-center bg-background fixed top-0 w-full h-navbar z-20 transition-all delay-100 duration-300`}>
-      <div className='container flex items-center justify-between'>
+    <nav className={className}>
+      <div className='container h-20 flex items-center justify-between'>
         <Link href={'/'}>
           <span className='text-4xl font-extrabold tracking-wider font-special'>JEUNIH</span>
         </Link>
