@@ -31,6 +31,8 @@ async function getCategories(): Promise<CategoryPreview[]>{
   }
 }
 
+export const revalidate = 60
+
 export default async function Blogs() {
 
   const [categories] = await Promise.all([getCategories()])
