@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { SubmitButton } from './SubmitButton'
 import { useFormState } from 'react-dom'
-import { sendEmail } from '@/app/lib/sendEmail'
+import { sendEmail } from '@/lib/sendEmail'
 
 export const ContactForm = () => {
 

@@ -1,37 +1,81 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
-:root{
-  --background: 0 0% 7%;
-  --foreground: 0 0% 99%;
-  --muted: 0 0% 40%;
-  --foreground-overlay: 0 0% 1%;
-  --primary: 204 47% 28%;
+  @layer base {
+    :root {
+      --background: 0 0% 97%;
+      --foreground: 222.2 84% 4.9%;
 
-}
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
 
-@layer base{
-  body {
-    background-image: url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg');
-    background-color: #121212;
-    background-position: right;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
 
-}
+      --primary: 45 93% 47%;
+      --primary-foreground: 210 40% 98%;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+      --secondary: 217.2 22.6% 90.5%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+
+      --accent: 222 98% 47%;
+      --accent-foreground: 222.2 47.4% 98.2%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 0 0% 7%;
+      --foreground: 210 40% 98%;
+
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 45 96% 40%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 217.2 72.6% 10.5%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+
+      --accent: 222 98% 47%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
   }
-  .text-shadow {
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px;
-  }
-  .hover_underline{
-    @apply relative before:content-[''] hover:before:w-full before:transition-all before:absolute before:w-0 before:h-0.5 before:duration-300 before:bg-foreground before:left-0 before:bottom-0 before:right-0 before:mx-auto
-  }
 
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+  @layer utilities{
+    .hover_underline{
+      @apply relative before:content-[''] hover:before:w-full before:transition-all before:absolute before:w-0 before:h-0.5 before:duration-300 before:bg-foreground before:left-0 before:bottom-0 before:right-0 before:mx-auto
+  }
 }

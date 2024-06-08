@@ -5,10 +5,10 @@ import React from 'react'
 export default function Contact() {
   return (
     <>
-      <header className='bg-background'>
+      <header className='border-b bg-background'>
         <Navbar />
       </header>
-      <main className='bg-foreground text-foreground-overlay min-h-dvh'>
+      <main className='min-h-dvh bg-background'>
         <div className="container py-12 space-y-4">
           <div className='text-center max-w-screen-md mx-auto text-balance'>
             <div className='flex justify-center text-yellow-500'>

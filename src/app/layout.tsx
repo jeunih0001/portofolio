@@ -2,6 +2,8 @@ import { Navbar } from "@/components/Navbar";
 import type { Metadata } from "next";
 import './globals.css'
 import { Anton, Poppins as FontSans } from "next/font/google";
+import ThemeProvider from "@/providers/ThemeProvider";
+import { CSSProperties } from "react";
 
 const fontSans = FontSans({ subsets: ["latin"] , weight: ['300','400','500','700','900'] });
 
@@ -12,6 +14,13 @@ export const metadata: Metadata = {
   description: "Web developer",
 };
 
+const BODYSTLES: CSSProperties ={
+  backgroundImage: `url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg')`,
+  backgroundSize: 'contain',
+  backgroundPosition: 'right top',
+  backgroundRepeat: 'no-repeat'
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,9 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${fontSans.className} antialiased text-foreground`} suppressHydrationWarning>
-        {children}
-      </body>
+      <ThemeProvider>
+        <body style={BODYSTLES} className={`${anton.variable} ${fontSans.className} antialiased text-foreground`} suppressHydrationWarning>
+          {children}
+        </body>
+      </ThemeProvider>
     </html>
 
   );

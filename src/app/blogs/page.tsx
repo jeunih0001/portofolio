@@ -1,15 +1,45 @@
 import { Navbar } from '@/components/Navbar'
+import prisma from '@/lib/connect'
+import { Category } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export default function Blogs() {
+export type CategoryPreview = {
+  name: string,
+  slug: string,
+}
+
+async function getCategories(): Promise<CategoryPreview[]>{
+  try {
+    const response = await prisma.category.findMany({
+      select: {
+        name: true,
+        slug: true
+      },
+      take: 5,
+      orderBy: {
+        createdAt: 'desc'
+      }
+    })
+
+    return response
+
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+}
+
+export default async function Blogs() {
+
+  const [categories] = await Promise.all([getCategories()])
   return (
     <>
-      <header className='bg-background sticky top-0'>
+      <header className='bg-background border-b sticky top-0'>
         <Navbar />
       </header>
-      <main className='bg-foreground text-foreground-overlay min-h-dvh'>
+      <main className='bg-background min-h-dvh'>
         <div className="container py-12">
           <section>
             <h2 className='text-3xl font-bold mb-8'>Featured Blogs</h2>
@@ -40,9 +70,9 @@ export default function Blogs() {
             <section className='sticky top-navbar'>
               <h2 className='text-3xl font-bold my-8'>Categories</h2>
               <ul className='divide-y'>
-                {Array.from({length: 8},(_,index) => 
-                  <li key={index} className='py-2'>
-                    <Link  className='text-muted font-medium hover:text-primary' href={'/'}>Name</Link>
+                {categories.map(category => 
+                  <li key={category.slug} className='py-2'>
+                    <Link  className='text-foreground font-medium hover:text-primary' href={'/'}>{category.name}</Link>
                   </li>
                 )}
               </ul>
@@ -64,11 +94,11 @@ const MainCard = () => {
           height={0}
           alt='blog image'
           className='w-full aspect-video bg-muted'
-          src={'https://source.unsplash.com/random/1280x720/?tech'}
+          src={'https://source.unsplash.com/random'}
         />
       </figure>
       <div className='grid'>
-        <span className='text-sm font-medium text-muted'>14/9/2024</span>
+        <span className='text-sm font-medium text-muted-foreground'>14/9/2024</span>
         <h3 className='font-bold md:text-xl mb-2'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h3>
         <p className='text-sm md:text-base'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid commodi doloribus nesciunt, repudiandae ipsa atque.</p>
       </div>
@@ -85,34 +115,14 @@ const SplitCard = () => {
           height={0}
           alt='blog image'
           className='w-full aspect-video bg-muted'
-          src={'https://source.unsplash.com/random/1280x720/?tech'}
+          src={'https://source.unsplash.com/random'}
         />
       </figure>
       <div className='grid'>
-        <span className='text-sm font-medium text-muted'>14/9/2024</span>
+        <span className='text-sm font-medium text-muted-foreground'>14/9/2024</span>
         <h3 className='font-bold text-sm sm:text-base lg:text-lg'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h3>
       </div>
     </div>
   )
 
-}
-const NormalCard = () => {
-  return (
-    <div className='grid gap-3 items-start'>
-      <figure className='min-w-24'>
-        <Image
-          width={0}
-          height={0}
-          alt='blog image'
-          className='w-full aspect-video bg-muted'
-          src={'https://source.unsplash.com/random/1280x720/?tech'}
-        />
-      </figure>
-      <div className='grid'>
-        <span className='text-sm font-medium text-muted'>14/9/2024</span>
-        <h3 className='font-bold lg:text-xl mt-2 mb-3'>Lorem, ipsum dolor consectetur adipisicing elit. Vero, blanditiis.</h3>
-        <p className='text-muted text-sm lg:text-base'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum soluta maxime laboriosam vitae, quos animi?</p>
-      </div>
-    </div>
-  )
 }

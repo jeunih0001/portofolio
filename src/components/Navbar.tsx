@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { ResponsiveNavbar } from './ResponsiveNavbar'
+import ThemeSwitcher from './ThemeSwitcher'
+import { buttonVariants } from './ui/button'
 
 export const NAVLINKS = [
-  {
-    name: 'services',
-    href: '/services'
-  },
   {
     name: 'Projects',
     href: '/services'
@@ -25,12 +23,13 @@ export const Navbar = ({className}: {className?: string}) => {
         </Link>
         <div className='hidden md:flex items-center gap-6'>
           {NAVLINKS.map(link => 
-            <Link key={link.name} className='capitalize tracking-wider group inline-flex px-4 py-2 hover_underline' href={link.href}>
+            <Link key={link.name} className='capitalize tracking-wider group font-medium inline-flex px-4 py-2 hover_underline' href={link.href}>
               {link.name}
             </Link>
           )}
          
-          <Link className='capitalize tracking-wide group px-4 hover:bg-yellow-600 hover:shadow-xl font-medium transition-all py-4 bg-yellow-500 text-slate-50 rounded-md inline-flex justify-center' href={'contact'}>Get in touch</Link>
+          <ThemeSwitcher />
+          <Link className={buttonVariants({variant: 'default' , size: 'lg', className: 'h-12'})} href={'contact'}>Get in touch</Link>
         </div>
         <div className='inline-block md:hidden'>
           <ResponsiveNavbar />

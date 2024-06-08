@@ -2,29 +2,69 @@ import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { BiCategory, BiSlideshow } from 'react-icons/bi'
+import { buttonVariants } from './ui/button'
+import { BsNewspaper } from 'react-icons/bs'
+
+const NAVLINKS = [
+  {
+    name: 'Dashboard',
+    href: '',
+    icon: <BiSlideshow className='mr-2'/>
+  },
+  {
+    name: 'Projects',
+    href: 'projects',
+    icon: <BiSlideshow className='mr-2'/>
+  },
+  {
+    name: 'Categories',
+    href: 'categories',
+    icon: <BiCategory className='mr-2'/>
+  },
+  {
+    name: 'blogs',
+    href: 'blogs',
+    icon: <BsNewspaper className='mr-2'/>
+  },
+]
 
 export default function SideBar() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   return (
-    <aside className='w-64 flex-shrink-0 p-4'>
+    <aside className='w-64 flex-shrink-0 p-4 bg-secondary'>
       <div className='flex items-center gap-2'>
         <figure>
-          <Image
-            width={40}
-            height={40}
-            alt='Profile'
-            className='size-12 rounded-full border-2'
-            src={session?.user?.image!}
-          />
+          {status === 'loading' && <div className='size-12 rounded-full bg-accent animate-pulse'></div>}
+          {status === 'authenticated' &&
+            <Image
+              width={40}
+              height={40}
+              alt='Profile'
+              className='size-12 rounded-full border-2'
+              src={session.user?.image!}
+            />}
         </figure>
-        <div className='grid'>
-          <span className='font-medium line-clamp-1'>{session?.user?.name}</span>
-          <span className='text-sm text-yellow-600 font-medium'>Admin</span>
-        </div>
+        {status === 'authenticated' &&
+          <div className='grid'>
+            <span className='font-medium line-clamp-1'>{session.user?.name}</span>
+            <span className='text-sm text-yellow-600 font-medium'>Admin</span>
+          </div>}
       </div>
-      <div className='mt-6 space-y-2'>
-        <Link className='h-10 bg-yellow-500 hover:bg-yellow-600 transition-all flex items-center justify-center rounded-md' href={'/api/auth/signout?callbackUrl=/'}>Signout</Link>
-        <Link className='h-10 border-2 hover:bg-foreground/20 transition-all flex items-center justify-center rounded-md' href={'/'}>Home</Link>
+      <div className='my-6 gap-2 grid'>
+        <Link className={buttonVariants({variant: 'destructive'})} href={'/api/auth/signout?callbackUrl=/'}>Signout</Link>
+        <Link className={buttonVariants({variant: 'outline'})} href={'/'}>Home</Link>
+      </div>
+      <div className='grid gap-6'>
+        <span className='font-medium text-muted-foreground pb-1 border-b-2'>Resources</span>
+        <div className='grid gap-2'>
+          {NAVLINKS.map((link, index) =>
+            <Link className={buttonVariants({variant: 'sidebar',className: '!justify-start capitalize'})}key={index} href={`/admin/${link.href}`}>
+              {link.icon}
+              {link.name}
+            </Link>
+          )}
+        </div>
       </div>
     </aside>
   )
