@@ -1,0 +1,1 @@
+export const { GOOGLE_CLIENT , GOOGLE_SECRET , RESEND_KEY , ADMIN_EMAIL } = process.env

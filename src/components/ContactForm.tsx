@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { SubmitButton } from './SubmitButton'
 import { useFormState } from 'react-dom'
-import { sendEmail } from '@/app/sendEmail'
+import { sendEmail } from '@/app/lib/sendEmail'
 
 export const ContactForm = () => {
 
@@ -36,7 +36,7 @@ export const ContactForm = () => {
   return (
     <form ref={formRef} action={formAction}>
       {showError &&
-        <div className={`fixed z-30 animate-enter_y inset-0 h-fit top-4 border mx-auto w-72 rounded-lg px-4 py-3 shadow-lg flex justify-between gap-4 items-center ${state.success ? 'bg-green-50': 'bg-red-50 text-red-800 font-medium border-red-800'}`}>
+        <div className={`fixed z-30 animate-enter_y inset-0 h-fit top-4 border mx-auto w-72 rounded-lg px-4 py-3 shadow-lg flex justify-between gap-4 items-center ${state.success ? 'bg-green-50 text-background': 'bg-red-50 text-red-800 font-medium border-red-800'}`}>
           <p className='capitalize text-sm'>{state.message}</p>
           <button className='p-2 rounded-full hover:scale-105 transition-all flex-shrink-0' onClick={() => setShowError(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

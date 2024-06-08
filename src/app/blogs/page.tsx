@@ -26,7 +26,7 @@ export default function Blogs() {
               </div>
             </div>
           </section>
-          <div className="mt-8 grid items-start gap-12 grid-cols-[1fr,300px]">
+          <div className="mt-8 grid items-start gap-12 md:grid-cols-[1fr,300px]">
             <section className='max-w-screen-md'>
               <h2 className='text-3xl font-bold my-8'>Latest Blogs</h2>
               <div className='grid gap-12 '>

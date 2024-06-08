@@ -9,18 +9,20 @@ export default function Contact() {
         <Navbar />
       </header>
       <main className='bg-foreground text-foreground-overlay min-h-dvh'>
-        <div className='text-center max-w-screen-md mx-auto text-balance py-8'>
-          <div className='flex justify-center text-yellow-500'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-            </svg>
+        <div className="container py-12 space-y-4">
+          <div className='text-center max-w-screen-md mx-auto text-balance'>
+            <div className='flex justify-center text-yellow-500'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <h1 className='font-special text-4xl my-4'>Contact Me</h1>
           </div>
-          <h1 className='font-special text-4xl my-4'>Contact Me</h1>
-        </div>
-        <div className='max-w-screen-sm mx-auto '>
+          <div className='max-w-screen-sm mx-auto '>
             <ContactForm />
+          </div>
         </div>
-      </main>   
+      </main>
     </>
   )
 }

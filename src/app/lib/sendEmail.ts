@@ -2,8 +2,9 @@
 
 import { Resend } from "resend"
 import { z } from "zod"
+import { RESEND_KEY } from "./config"
 
-const resend = new Resend(process.env.RESEND_KEY)
+const resend = new Resend(RESEND_KEY!)
 
 export async function sendEmail(prevState: any, formData: FormData) {
   
