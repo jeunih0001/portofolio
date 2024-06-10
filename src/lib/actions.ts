@@ -1,11 +1,17 @@
 "use server"
+interface ReturnState {
+  status?: 'error' | 'success',
+  errors?: object
+}
 
+type ModelNames = Prisma.ModelName
+
+import { Prisma } from "@prisma/client"
 import prisma from "./connect"
-import { categoryFormSchema } from "./schema"
+import { categoryFormSchema, projectFormSchema } from "./schema"
 import { slugify } from "./utils"
 
 export async function CreateCategory(prevState: any, formData: FormData){
-  console.log(formData)
   const rawFormData = {
     name: formData.get('name'),
     description: formData.get('description')
@@ -43,25 +49,71 @@ export async function CreateCategory(prevState: any, formData: FormData){
   
 }
 
-export async function deleteCategory(categoryId: string){
-  console.log(categoryId)
+export async function createProject(prevState: any, formData: FormData){
+  const rawFormData = {
+    name: formData.get('name'),
+    summary: formData.get('summary'),
+    tags: formData.get('tags'),
+    url: formData.get('url')
+  }
 
+  const validatedData = projectFormSchema.safeParse(rawFormData)
+
+  if (validatedData.error)
+    return {
+      ...prevState,
+      status: 'error',
+      errors: validatedData.error.flatten().fieldErrors
+    }
+  
   try {
-    const response = await prisma.category.delete({
-      where: {
-        id: categoryId
+    await prisma.project.create({
+      data: {
+        name: validatedData.data.name,
+        summary: validatedData.data.summary,
+        url: validatedData.data.url
       }
     })
 
     return {
-      status: 'success',
-      response,
+      ...prevState,
+      status: 'ok',
+      errors: null,
     }
-
   } catch (error) {
+    console.error(error)
     return {
-      status: 'fail',
+      ...prevState,
+      status: 'error',
+      errors: {error}
     }
   }
-  
+
+ 
+}
+
+export interface DeleteConfig {
+  schema: ModelNames,
+  record: string,
+}
+
+export async function deleteAction(config: DeleteConfig): Promise<ReturnState> {
+  try {
+    // @ts-ignore
+    await prisma[config.schema.toLocaleLowerCase()].delete({
+      where: {
+        id: config.record
+      },
+    });
+    
+    return {
+      status: 'success'
+    };
+  } catch (error) {
+    console.error('Error deleting record:', error);
+    return {
+      status: 'error',
+      errors: {message: 'Server error'}
+    }
+  }
 }

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFormState } from 'react-dom'
 import { sendEmail } from '@/lib/sendEmail'
-import SubmitButton from './partials/categories/SubmitButton'
+import SubmitButton from './SubmitButton'
 
 export const ContactForm = () => {
 

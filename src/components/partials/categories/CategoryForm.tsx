@@ -6,7 +6,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useFormState } from 'react-dom'
 import { CreateCategory } from '@/lib/actions'
-import SubmitButton from './SubmitButton'
 import { useRouter } from 'next/navigation'
 import {
   Dialog,
@@ -17,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { buttonVariants } from '@/components/ui/button'
+import SubmitButton from '@/components/SubmitButton'
 
 export default function CategoryForm({ category }: { category?: Category }) {
   const [open,setOpen] = useState<boolean>(false)
@@ -33,7 +33,7 @@ export default function CategoryForm({ category }: { category?: Category }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <span className={buttonVariants({variant: 'accent'})}>New Category</span>
+        <span className={buttonVariants()}>New Category</span>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

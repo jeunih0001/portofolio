@@ -24,10 +24,6 @@ export default async function Categories() {
   const categories = await getCategories()
   return (
     <main className='px-4'>
-      <div className='bg-secondary p-4 flex justify-between rounded-t-md'>
-        <h2 className='text-2xl font-bold'>Categories</h2>
-        <CategoryForm />
-      </div>
       <CategoriesTable categories={categories} />
     </main>
   )
