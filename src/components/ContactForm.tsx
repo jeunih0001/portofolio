@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
-import { SubmitButton } from './SubmitButton'
 import { useFormState } from 'react-dom'
 import { sendEmail } from '@/lib/sendEmail'
+import SubmitButton from './partials/categories/SubmitButton'
 
 export const ContactForm = () => {
 
@@ -48,7 +48,7 @@ export const ContactForm = () => {
       }
       <div className='space-y-4'>
         <div className='grid gap-2'>
-          <label className='font-medium' htmlFor="name">Name</label>
+          <label className='font-medium text-sm text-muted-foreground' htmlFor="name">Name</label>
           <input
             className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             type="text"
@@ -58,7 +58,7 @@ export const ContactForm = () => {
           {state.errors.name && <p className='text-sm font-medium text-red-400'>{state.errors.name}</p>}
         </div>
         <div className='grid gap-2'>
-          <label className='font-medium' htmlFor="email">Email</label>
+          <label className='font-medium text-sm text-muted-foreground' htmlFor="email">Email</label>
           <input
             className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             type="email"
@@ -68,7 +68,7 @@ export const ContactForm = () => {
           {state.errors.email && <p className='text-sm font-medium text-red-400'>{state.errors.email}</p>}
         </div>
         <div className='grid gap-2'>
-          <label className='font-medium' htmlFor="message">Message</label>
+          <label className='font-medium text-sm text-muted-foreground' htmlFor="message">Message</label>
           <textarea
             className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
             name="message"
@@ -77,7 +77,7 @@ export const ContactForm = () => {
         </div>
       </div>
       <div className='mt-8 text-center'>
-        <SubmitButton />
+        <SubmitButton message='Send Message' base/>
       </div>
     </form>
   )

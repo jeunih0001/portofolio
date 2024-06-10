@@ -5,7 +5,7 @@ import { useFormStatus } from 'react-dom'
 
 type ActionType = 'create' | 'read' | 'update' | 'delete'
 
-export default function SubmitButton({message , action = 'create'}: {message: string , action?: ActionType}) {
+export default function SubmitButton({message , action = 'create' , base = false}: {message: string , action?: ActionType , base?: boolean}) {
   const { pending } = useFormStatus()
 
   
@@ -14,7 +14,7 @@ export default function SubmitButton({message , action = 'create'}: {message: st
       variant={action === 'delete' ? 'destructive' :
         action === 'update' ? 'outline': 
         'default'
-    } disabled={pending} type='submit' size={'sm'}>
+    } disabled={pending} type='submit' size={base ? 'default' : 'sm'}>
       {pending &&
         <Spinner className='size-3 mr-1' />
       }

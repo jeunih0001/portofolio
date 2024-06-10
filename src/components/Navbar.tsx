@@ -6,11 +6,15 @@ import { buttonVariants } from './ui/button'
 export const NAVLINKS = [
   {
     name: 'Projects',
-    href: '/services'
+    href: '/projects'
   },
   {
     name: 'Blogs',
     href: '/blogs'
+  },
+  {
+    name: 'Contact Me',
+    href: '/contact'
   },
 ]
 
@@ -21,18 +25,18 @@ export const Navbar = ({className}: {className?: string}) => {
         <Link href={'/'}>
           <span className='text-4xl font-extrabold tracking-wider font-special'>JEUNIH</span>
         </Link>
-        <div className='hidden md:flex items-center gap-6'>
-          {NAVLINKS.map(link => 
-            <Link key={link.name} className='capitalize tracking-wider group font-medium inline-flex px-4 py-2 hover_underline' href={link.href}>
-              {link.name}
-            </Link>
-          )}
-         
+        <div className='flex items-center gap-4'>
+          <div className='hidden md:flex items-center gap-6'>
+            {NAVLINKS.map(link => 
+              <Link key={link.name} className='capitalize tracking-wider group font-medium inline-flex px-4 py-2 hover_underline' href={link.href}>
+                {link.name}
+              </Link>
+            )}
+          </div>
           <ThemeSwitcher />
-          <Link className={buttonVariants({variant: 'default' , size: 'lg', className: 'h-12'})} href={'contact'}>Get in touch</Link>
-        </div>
-        <div className='inline-block md:hidden'>
-          <ResponsiveNavbar />
+          <div className='inline-block md:hidden'>
+            <ResponsiveNavbar />
+          </div>
         </div>
       </div>
     </nav>

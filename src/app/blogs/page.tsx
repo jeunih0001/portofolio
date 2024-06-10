@@ -42,7 +42,7 @@ export default async function Blogs() {
         <Navbar />
       </header>
       <main className='bg-background min-h-dvh'>
-        <div className="container py-12">
+        <div className="container py-6">
           <section>
             <h2 className='text-3xl font-bold mb-8'>Featured Blogs</h2>
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-6">

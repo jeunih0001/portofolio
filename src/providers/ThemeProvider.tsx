@@ -11,14 +11,16 @@ interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType>({theme:'light',toggle:()=>{}})
 
 export default function ThemeProvider({children}: {children: ReactNode}){
-  const [theme,setTheme] = useState<Theme>(()=>{
-    if (typeof localStorage === 'undefined') return 'light'
-    const lightMode = localStorage.getItem('theme') === 'light'
-    return lightMode ? 'light' : 'dark'
-  })
+  const [theme,setTheme] = useState<Theme>('dark')
   function toggleTheme(){
     setTheme(theme === 'dark' ? 'light': 'dark')
   }
+
+  useEffect(()=>{
+    if (typeof localStorage === 'undefined') return 
+    const lightMode = localStorage.getItem('theme') === 'light'
+    setTheme(lightMode ? 'light' : 'dark')
+  },[])
 
   useEffect(()=>{
     if (theme === 'dark')
