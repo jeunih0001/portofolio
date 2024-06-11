@@ -10,6 +10,7 @@ import { Prisma } from "@prisma/client"
 import prisma from "./connect"
 import { categoryFormSchema, projectFormSchema } from "./schema"
 import { slugify } from "./utils"
+import { revalidatePath } from "next/cache"
 
 export async function CreateCategory(prevState: any, formData: FormData){
   const rawFormData = {
@@ -88,6 +89,9 @@ export async function createProject(prevState: any, formData: FormData){
       errors: {error}
     }
   }
+
+
+  
 
  
 }

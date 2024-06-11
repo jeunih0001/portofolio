@@ -4,8 +4,6 @@ import prisma from '@/lib/connect'
 import { Category } from '@prisma/client'
 import React from 'react'
 
-export const revalidate = 0
-
 async function getCategories(): Promise<Category[]>{
   try {
     const response = await prisma.category.findMany({

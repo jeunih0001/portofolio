@@ -1,4 +1,4 @@
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, getServerSession } from "next-auth";
 import Google, { GoogleProfile } from "next-auth/providers/google";
 import { ADMIN_EMAIL, GOOGLE_CLIENT, GOOGLE_SECRET } from "./config";
 
@@ -26,3 +26,5 @@ export const AuthOptions: NextAuthOptions = {
     }
   }
 }
+
+export const getServerAuthSession = async () =>  await getServerSession(AuthOptions)

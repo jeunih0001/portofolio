@@ -1,8 +1,9 @@
-"use client"
 import SideBar from '@/components/SideBar'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import AuthProvider from '@/providers/AuthProvider'
 import React from 'react'
+
+export const revalidate = 0
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (

@@ -1,10 +1,10 @@
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { BiCategory, BiSlideshow } from 'react-icons/bi'
 import { buttonVariants } from './ui/button'
 import { BsNewspaper } from 'react-icons/bs'
+import { getServerAuthSession } from '@/lib/AuthOptions'
 
 const NAVLINKS = [
   {
@@ -29,27 +29,25 @@ const NAVLINKS = [
   },
 ]
 
-export default function SideBar() {
-  const { data: session, status } = useSession()
+export default async function SideBar() {
+  const session = await getServerAuthSession()
+  if (!session) return 404
   return (
     <aside className='w-64 flex-shrink-0 p-4 bg-secondary'>
       <div className='flex items-center gap-2'>
         <figure>
-          {status === 'loading' && <div className='size-12 rounded-full bg-accent animate-pulse'></div>}
-          {status === 'authenticated' &&
             <Image
               width={40}
               height={40}
               alt='Profile'
               className='size-12 rounded-full border-2'
               src={session.user?.image!}
-            />}
+            />
         </figure>
-        {status === 'authenticated' &&
           <div className='grid'>
             <span className='font-medium line-clamp-1'>{session.user?.name}</span>
             <span className='text-sm text-yellow-600 font-medium'>Admin</span>
-          </div>}
+          </div>
       </div>
       <div className='my-6 gap-2 grid'>
         <Link className={buttonVariants({variant: 'destructive'})} href={'/api/auth/signout?callbackUrl=/'}>Signout</Link>

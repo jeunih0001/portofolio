@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/Navbar";
 import type { Metadata } from "next";
 import './globals.css'
 import { Anton, Poppins as FontSans } from "next/font/google";

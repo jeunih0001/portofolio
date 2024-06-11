@@ -2,8 +2,6 @@ import ProjectsTable from '@/components/partials/projects/ProjectsTable'
 import prisma from '@/lib/connect'
 import React from 'react'
 
-export const revalidate = 0
-
 async function getProjects(){
   const projects = await prisma.project.findMany({
     orderBy: {
