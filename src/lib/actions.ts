@@ -121,3 +121,7 @@ export async function deleteAction(config: DeleteConfig): Promise<ReturnState> {
     }
   }
 }
+
+
+// when creating the create and edit action , pass the config in the formState
+// creating only takes a model and formZodSchema should be an object where the key is model name
