@@ -13,7 +13,7 @@ const config = {
     container: {
       center: true,
       screens: {
-        "2xl": "1024px",
+        "2xl": "1140px",
       },
     },
     extend: {

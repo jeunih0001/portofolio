@@ -46,11 +46,11 @@ export const ContactForm = () => {
           </button>
         </div>
       }
-      <div className='space-y-4'>
+      <div className='grid gap-4 grid-cols-2'>
         <div className='grid gap-2'>
           <label className='font-medium text-sm text-muted-foreground' htmlFor="name">Name</label>
           <input
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
             type="text"
             name="name"
             id="name"
@@ -60,17 +60,18 @@ export const ContactForm = () => {
         <div className='grid gap-2'>
           <label className='font-medium text-sm text-muted-foreground' htmlFor="email">Email</label>
           <input
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
             type="email"
             name="email"
             id="email"
           />
           {state.errors.email && <p className='text-sm font-medium text-red-400'>{state.errors.email}</p>}
         </div>
-        <div className='grid gap-2'>
+        <div className='grid gap-2 col-span-full'>
           <label className='font-medium text-sm text-muted-foreground' htmlFor="message">Message</label>
           <textarea
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-yellow-300'
+            rows={4}
+            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
             name="message"
             id="message" />
           {state.errors.message && <p className='text-sm font-medium text-red-400'>{state.errors.message}</p>}
