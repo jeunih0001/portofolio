@@ -53,6 +53,7 @@ export async function CreateCategory(prevState: any, formData: FormData){
 export async function createProject(prevState: any, formData: FormData){
   const rawFormData = {
     name: formData.get('name'),
+    image: formData.get('image'),
     summary: formData.get('summary'),
     tags: formData.get('tags'),
     url: formData.get('url')
@@ -71,6 +72,7 @@ export async function createProject(prevState: any, formData: FormData){
     await prisma.project.create({
       data: {
         name: validatedData.data.name,
+        image: validatedData.data.image,
         summary: validatedData.data.summary,
         url: validatedData.data.url
       }

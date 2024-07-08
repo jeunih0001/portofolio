@@ -2,19 +2,29 @@ import { ContactForm } from '@/components/ContactForm'
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar'
 import ProjectCard from '@/components/ProjectCard';
-import { buttonVariants } from '@/components/ui/button';
+import prisma from '@/lib/connect';
 import { ExternalLinkIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link'
 import React, { CSSProperties } from 'react'
 import { MdConnectWithoutContact } from "react-icons/md";
 
-export default function Home() {
+export default async function Home() {
   const STYLES: CSSProperties = {
     backgroundImage: `url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg')`,
     backgroundSize: 'contain',
     backgroundPosition: 'right top',
     backgroundRepeat: 'no-repeat'
   }
+  const LSTYLES: CSSProperties = {
+    backgroundImage: `url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg')`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }
+
+  const [projects] = await Promise.all([
+    prisma.project.findMany()
+  ])
 
   return (
     <>
@@ -33,12 +43,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className='container mb-20 space-y-4 text-center'>
+          <h2 className='text_section_header'>About Me</h2>
+          <p className='max-w-screen-md mx-auto text-muted-foreground tracking-wide leading-7'>
+            Hey there! I&apos;m a passionate fullstack web developer with a knack for bringing ideas to life through code. My go-to tools are Next.js and Laravel, but I&apos;m flexible and always up for learning new technologies to get the job done. Whether it&apos;s building robust backends or crafting sleek, responsive frontends, I love tackling challenges and delivering top-notch solutions. Let&apos;s create something amazing together!
+          </p>
+        </section>
         <section className='container mb-20 space-y-8'>
           <h2 className='text_section_header'>My Projects</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 4 }, (_, index) =>
-              <Link href={''} key={index} className='contents' >
-                <ProjectCard className={index == 0 || index == 3 ? 'lg:col-span-2' : ''}/>
+            {projects.map((project,index) => 
+              <Link href={project.url!} key={index} className='contents' >
+                <ProjectCard project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''}/>
               </Link>
             )}
           </div>
@@ -49,32 +65,15 @@ export default function Home() {
             </Link>
           </div>
         </section>
-        <section className='container mb-20 space-y-4 text-center'>
-          <h2 className='text_section_header'>About Me</h2>
-          <p className='max-w-screen-md mx-auto text-muted-foreground tracking-wide leading-7'>
-            Hey there! I&apos;m a passionate fullstack web developer with a knack for bringing ideas to life through code. My go-to tools are Next.js and Laravel, but I&apos;m flexible and always up for learning new technologies to get the job done. Whether it&apos;s building robust backends or crafting sleek, responsive frontends, I love tackling challenges and delivering top-notch solutions. Let&apos;s create something amazing together!
-          </p>
-        </section>
-        <section id='contact' className='container mb-20'>
-          <div className='grid md:grid-cols-[1fr,2fr] gap-4 border-2 rounded-md overflow-hidden'>
-            <div className='bg-foreground/10 bg-gradient-to-br from-secondary/20 to-primary/20 py-12 px-4 grid place-content-center gap-8'>
-              <MdConnectWithoutContact className='w-16 mx-auto h-auto' />
-              <div className='flex flex-wrap justify-center gap-3'>
-                {Array.from({ length: 3 }, (_, index) =>
-                  <Link key={index} href={'/'} className='text-sm border-muted-foreground text-muted-foreground rounded-md inline-flex items-center gap-1 border-2 px-4 py-2 round-md'>
-                    Linkedin
-                    <ExternalLinkIcon />
-                  </Link>
-                )}
-              </div>
-            </div>
-            <div className='space-y-6 py-12 px-4  '>
+        
+        <section id='contact' style={LSTYLES} className='h-dvh'>
+            <div className='space-y-6 max-w-screen-sm mx-auto py-32 rounded-lg bg-background/10 backdrop-blur-sm'>
               <h2 className='text_section_header text-center'>Contact Me</h2>
               <ContactForm />
 
             </div>
-          </div>
         </section>
+        
         <Footer />
       </main>
     </>

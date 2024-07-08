@@ -20,6 +20,7 @@ export default function ProjectForm({project}:{project?: Project}) {
       router.refresh()
     }
   },[state,router])
+
   return (
     <form action={action}>
       {state.errors && <code>{JSON.stringify(state.errors)}</code>}
@@ -29,6 +30,13 @@ export default function ProjectForm({project}:{project?: Project}) {
           <Input
             name='name'
             id='name'
+          />
+        </div>
+        <div className='grid gap-1'>
+          <Label htmlFor='image'>Image Url</Label>
+          <Input
+            name='image'
+            id='image'
           />
         </div>
         <div className='grid gap-1'>
