@@ -11,10 +11,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
       <div className='flex h-dvh divide-x'>
         <SideBar />
         <div className='border-r flex-grow bg-background flex flex-col'>
-          <div className='flex justify-end items-center h-12 flex-shrink-0 px-4'>
-            <ThemeSwitcher />
-          </div>
-          <div className='flex-grow overflow-auto py-16'>
+          <div className='flex-grow overflow-auto py-16 px-base'>
             {children}
           </div>
         </div>

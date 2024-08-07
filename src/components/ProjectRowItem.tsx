@@ -20,7 +20,7 @@ export default function ProjectRowItem({ project }: { project: Project }) {
 function ProjectActions({projectId}: {projectId: string}) {
   return (
     <div className='flex items-center gap-2'>
-      <Link href={`/admin/project/${projectId}/edit`} className={buttonVariants({variant: 'outline'})}>Edit</Link>
+      <Link href={`projects/${projectId}/edit`} className={buttonVariants({variant: 'outline'})}>Edit</Link>
       <DeleteAction config={{schema: 'Project', record: projectId}}/>
     </div>
   )

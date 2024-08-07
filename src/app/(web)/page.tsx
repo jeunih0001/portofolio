@@ -65,7 +65,7 @@ export default async function Home() {
         </section>
 
         <section id='contact' style={LSTYLES} >
-          <div className='py-section px-base bg-background/70 '>
+          <div className='py-section px-base bg-background/50 '>
             <div className='space-y-6 max-w-screen-md mx-auto rounded-lg '>
               <h2 className='text_section_header text-center'>Contact Me</h2>
               <ContactForm />

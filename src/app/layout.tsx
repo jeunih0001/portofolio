@@ -20,11 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider>
         <body className={`${anton.variable} ${fontSans.className} scroll-smooth antialiased text-foreground`} suppressHydrationWarning>
           {children}
         </body>
-      </ThemeProvider>
     </html>
 
   );

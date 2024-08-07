@@ -8,7 +8,7 @@ type ModelNames = Prisma.ModelName
 
 import { Prisma } from "@prisma/client"
 import prisma from "./connect"
-import { categoryFormSchema, projectFormSchema } from "./schema"
+import { categoryFormSchema } from "./schema"
 import { slugify } from "./utils"
 import { revalidatePath } from "next/cache"
 
@@ -48,54 +48,6 @@ export async function CreateCategory(prevState: any, formData: FormData){
   }
 
   
-}
-
-export async function createProject(prevState: any, formData: FormData){
-  const rawFormData = {
-    name: formData.get('name'),
-    image: formData.get('image'),
-    summary: formData.get('summary'),
-    tags: formData.get('tags'),
-    url: formData.get('url')
-  }
-
-  const validatedData = projectFormSchema.safeParse(rawFormData)
-
-  if (validatedData.error)
-    return {
-      ...prevState,
-      status: 'error',
-      errors: validatedData.error.flatten().fieldErrors
-    }
-  
-  try {
-    await prisma.project.create({
-      data: {
-        name: validatedData.data.name,
-        image: validatedData.data.image,
-        summary: validatedData.data.summary,
-        url: validatedData.data.url
-      }
-    })
-
-    return {
-      ...prevState,
-      status: 'ok',
-      errors: null,
-    }
-  } catch (error) {
-    console.error(error)
-    return {
-      ...prevState,
-      status: 'error',
-      errors: {error}
-    }
-  }
-
-
-  
-
- 
 }
 
 export interface DeleteConfig {
