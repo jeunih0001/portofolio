@@ -16,7 +16,7 @@ export const Navbar = ({className}: {className?: string}) => {
         <div className='flex items-center gap-4'>
           <ThemeSwitcher />
           <div className='hidden md:block'>
-            <a href="#contact" className={buttonVariants({className: 'bg-gradient-to-br from-primary to-secondary py-6 px-8'})}>Contact Me</a>
+            <a href="#contact" className={buttonVariants()}>Contact Me</a>
           </div>
         </div>
       </div>

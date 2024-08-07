@@ -17,8 +17,8 @@ export default async function Home() {
   }
   const LSTYLES: CSSProperties = {
     backgroundImage: `url('https://res.cloudinary.com/dn7lqpl1x/image/upload/v1631080208/wrapped_k7g6ev.svg')`,
-    backgroundSize: 'contain',
-    backgroundPosition: 'center',
+    backgroundSize: '50% 100%',
+    backgroundPosition: 'left top',
     backgroundRepeat: 'no-repeat'
   }
 
@@ -37,7 +37,7 @@ export default async function Home() {
             <p className='text-lg  font-medium'>👋, I am Jean Eudes</p>
             <h1 className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></h1>
             <div className='justify-center ma'>
-              <Link className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex whitespace-pre' href={'contact'}>
+              <Link className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex whitespace-pre' href={'#contact'}>
                 Let&apos;s work together 👌
               </Link>
             </div>
@@ -52,9 +52,9 @@ export default async function Home() {
         <section className='container mb-20 space-y-8'>
           <h2 className='text_section_header'>My Projects</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project,index) => 
+            {projects.map((project, index) =>
               <Link href={project.url!} key={index} className='contents' >
-                <ProjectCard project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''}/>
+                <ProjectCard project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''} />
               </Link>
             )}
           </div>
@@ -65,15 +65,17 @@ export default async function Home() {
             </Link>
           </div>
         </section>
-        
-        <section id='contact' style={LSTYLES} className='h-dvh'>
-            <div className='space-y-6 max-w-screen-sm mx-auto py-32 rounded-lg bg-background/10 backdrop-blur-sm'>
+
+        <section id='contact' style={LSTYLES} >
+          <div className='py-section px-base bg-background/70 '>
+            <div className='space-y-6 max-w-screen-md py-12 mx-auto rounded-lg '>
               <h2 className='text_section_header text-center'>Contact Me</h2>
               <ContactForm />
-
             </div>
+          </div>
+
         </section>
-        
+
         <Footer />
       </main>
     </>

@@ -45,7 +45,7 @@ export const ContactForm = () => {
           </button>
         </div>
       }
-      <div className='grid gap-4 grid-cols-2'>
+      <div className='grid gap-6 md:grid-cols-2'>
         <div className='grid gap-2'>
           <label className='font-medium text-sm text-muted-foreground' htmlFor="name">Name</label>
           <input
