@@ -43,19 +43,17 @@ export default async function Home() {
             </div>
           </div>
         </section>
-        <section className='container mb-20 space-y-4 text-center'>
+        <section className='container py-section space-y-4 text-center'>
           <h2 className='text_section_header'>About Me</h2>
           <p className='max-w-screen-md mx-auto text-muted-foreground tracking-wide leading-7'>
             Hey there! I&apos;m a passionate fullstack web developer with a knack for bringing ideas to life through code. My go-to tools are Next.js and Laravel, but I&apos;m flexible and always up for learning new technologies to get the job done. Whether it&apos;s building robust backends or crafting sleek, responsive frontends, I love tackling challenges and delivering top-notch solutions. Let&apos;s create something amazing together!
           </p>
         </section>
-        <section className='container mb-20 space-y-8'>
+        <section className='container py-section space-y-8'>
           <h2 className='text_section_header'>My Projects</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) =>
-              <Link href={project.url!} key={index} className='contents' >
-                <ProjectCard project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''} />
-              </Link>
+              <ProjectCard key={index} project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''} />
             )}
           </div>
           <div className='flex justify-center'>
@@ -68,7 +66,7 @@ export default async function Home() {
 
         <section id='contact' style={LSTYLES} >
           <div className='py-section px-base bg-background/70 '>
-            <div className='space-y-6 max-w-screen-md py-12 mx-auto rounded-lg '>
+            <div className='space-y-6 max-w-screen-md mx-auto rounded-lg '>
               <h2 className='text_section_header text-center'>Contact Me</h2>
               <ContactForm />
             </div>
