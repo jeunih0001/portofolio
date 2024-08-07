@@ -36,7 +36,7 @@ export const ContactForm = () => {
   return (
     <form ref={formRef} action={formAction}>
       {showError &&
-        <div className={`fixed z-30 animate-enter_y inset-0 h-fit top-4 border mx-auto w-72 rounded-lg px-4 py-3 shadow-lg flex justify-between gap-4 items-center bg-foreground text-background`}>
+        <div className={`fixed z-30 animate-enter_y inset-0 h-fit top-4 border mx-auto w-72 rounded-lg px-4 py-3 shadow-lg flex justify-between gap-4 items-center bg-background text-foreground`}>
           <p className='capitalize text-sm font-medium'>{state.message}</p>
           <button className='p-2 rounded-full hover:scale-105 transition-all flex-shrink-0' onClick={() => setShowError(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
