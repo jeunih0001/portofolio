@@ -17,9 +17,9 @@ export async function uploadImage(formData: FormData): Promise<string>{
   const file = formData.get('file') as File
   const arrayBuffer = await file.arrayBuffer()
   const buffer  = new Uint8Array(arrayBuffer)
-  const image = `public/uploads/${file.name}`
+  const image = `./public/${file.name}`
   await fs.writeFile(image,buffer)
-  return image.replace('public','')
+  return image.replace('./public','')
 }
 
 export async function createProject(prevState: FormState, formData: FormData): Promise<FormState>{
