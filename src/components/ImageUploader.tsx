@@ -5,7 +5,7 @@ import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import Image from "next/image"
 import { uploadImage } from "@/lib/store"
-import { Button } from "./ui/button"
+import { Button, buttonVariants } from "./ui/button"
 import { FaXmark } from "react-icons/fa6"
 import { CldUploadButton, CloudinaryUploadWidgetInfo } from 'next-cloudinary';
 
@@ -45,10 +45,13 @@ export default function ImageUploader({ setField, existingImage }: Props) {
             </div>
           </div>
           :
-          <CldUploadButton onSuccess={(result) => setImage(() => {
+          <div className="h-24 grid place-content-center bg-secondary rounded-lg shadow">
+          <CldUploadButton className={buttonVariants({})} onSuccess={(result) => setImage(() => {
             const info = result.info as CloudinaryUploadWidgetInfo
             return info.secure_url
-          })} uploadPreset="portofolio" />}
+          })} uploadPreset="portofolio" />
+          </div>
+          }
 
       </div>
     </div>
