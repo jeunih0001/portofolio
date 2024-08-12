@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation"
 import prisma from "./connect"
-import { projectSchema } from "./schema"
+import { projectSchema, seoSchema } from "./schema"
 import { revalidatePath } from "next/cache"
 
 interface FormState {
@@ -16,7 +16,8 @@ export async function updateProject(formState: FormState,formData: FormData): Pr
 
   const rawFormData = {
     name: formData.get('name') as string,
-    url: formData.get('url') as string,
+    github: formData.get('github') as string,
+    live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,
     tags: (formData.get('tags') as string).split('#').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
@@ -48,4 +49,49 @@ export async function updateProject(formState: FormState,formData: FormData): Pr
 
   revalidatePath('/')
   redirect('/admin/projects')
+}
+
+export async function updateSeo(formState: FormState,formData: FormData): Promise<FormState>{
+
+  const id = formData.get('id') as string
+
+  const title = formData.get('title') as string
+  const description = formData.get('title') as string
+  const image = formData.get('image') as string
+  
+  const tags = (formData.get('tags') as string).trim().split(',')
+  const favicon = formData.get('favicon') as string
+
+  const twitter = formData.get('twitter') as string
+  const github = formData.get('github') as string
+  const linkedin = formData.get('linkedin') as string
+  
+
+  const rawFormData = {title,description,image,favicon,tags,twitter,github,linkedin}
+
+  const validation = seoSchema.safeParse(rawFormData)
+
+  if (validation.error) return {
+    status: 'error',
+    message: 'Validation error',
+    errors: validation.error.flatten().fieldErrors
+  }
+
+  try {
+    await prisma.seo.update({
+      where: {
+        id: id
+      },
+      data: validation.data
+    })
+  } catch (error) {
+    
+  }
+
+  revalidatePath('/','layout')
+
+  return {
+    status: 'success',
+    errors: null
+  }
 }

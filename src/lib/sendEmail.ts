@@ -4,10 +4,16 @@ import { Resend } from "resend"
 import { z } from "zod"
 import { RESEND_KEY } from "./config"
 
-const resend = new Resend(RESEND_KEY!)
+const resend = new Resend(RESEND_KEY)
 
-export async function sendEmail(prevState: any, formData: FormData) {
-  
+interface FormState {
+  ok?: boolean,
+  message?: string,
+  errors?: Record<string, any>| null,
+}
+
+export async function sendEmail(formState: FormState, formData: FormData): Promise<FormState> {
+
   const rawFormData = {
     name: formData.get('name'),
     email: formData.get('email'),
@@ -20,14 +26,13 @@ export async function sendEmail(prevState: any, formData: FormData) {
     message: z.string().min(5).max(200),
   })
 
-  const validatedFields = schema.safeParse(rawFormData)
+  const validation = schema.safeParse(rawFormData)
 
-  if (!validatedFields.success) {
+  if (validation.error) {
     return {
-      ...prevState,
-      success: false,
+      ok: false,
       message: 'validation error',
-      errors: validatedFields.error.flatten().fieldErrors
+      errors: validation.error.flatten().fieldErrors
     }
   }
 
@@ -36,31 +41,27 @@ export async function sendEmail(prevState: any, formData: FormData) {
     const res = await resend.emails.send({
       from: `From your portofolio <onboarding@resend.dev>`,
       to: 'quanyoudes@gmail.com',
-      reply_to: validatedFields.data.email,
-      subject: `Message from ${validatedFields.data.name}`,
-      text: validatedFields.data.message
+      reply_to: validation.data.email,
+      subject: `Message from ${validation.data.name}`,
+      text: validation.data.message
     })
-    
+
     if (res.error) return {
-      ...prevState,
-      success: false,
-      message: res.error.message
+      ok: false,
+      message: res.error.message,
+      errors: null,
     }
   } catch (error) {
     console.log(error)
     return {
-      ...prevState,
-      success: false,
-      message: 'Server Error'
+      ok: false,
+      message: 'Server Error',
+      errors: null,
     }
   }
   return {
-    success: true,
+    ok: true,
     message: 'Your email has been sent',
-    errors: {
-      name: null,
-      email: null,
-      message: null,
-    },
+    errors: null,
   }
 }

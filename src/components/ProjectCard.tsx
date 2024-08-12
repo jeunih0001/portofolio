@@ -16,9 +16,11 @@ export default function ProjectCard({project,className}: Readonly<Props>) {
       </div>
       <div className="col-start-1 row-start-1 grid overflow-hidden bg-black/20 text-white transition-all delay-200 duration-300 hover:bg-black/60 hover:backdrop-blur-sm">
         <div className="group grid content-end px-4 text-gray-200">
-          <Link href={project.url} className='hover:underline'>
-            <h3 className="mb-2 text-xl font-bold">{project.name}</h3>
-          </Link>
+          <h3 className="mb-2 text-xl font-bold">{project.name}</h3>
+          <div className='flex items-center gap-4'>
+            {project.github && <Link href={project.github} className='hover:underline font-medium'>Github Repo</Link>}
+            {project.live && <Link href={project.live} className='hover:underline font-medium'>Live</Link>}
+          </div>
           <div className="-mb-[100%] space-y-2 overflow-hidden pb-4 opacity-0 transition-all duration-500 group-hover:-mb-0 group-hover:opacity-100">
             <p className="max-w-sm text-sm">{project.summary}</p>
             <div className="flex flex-wrap items-center gap-4 text-xs">

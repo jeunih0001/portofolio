@@ -25,40 +25,53 @@ model Category {
 }
 
 model Blog {
-  id         String   @id @default(uuid()) @map("_id")
-  slug       String   @unique
-  title      String
-  summary    String
-  content    String
-  isPublished Boolean @default(false)
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId String
+  id          String   @id @default(uuid()) @map("_id")
+  slug        String   @unique
+  title       String
+  summary     String
+  content     String
+  isPublished Boolean  @default(false)
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Project {
-  id      String  @id @default(uuid()) @map("_id")
-  name    String  @unique
-  summary String  @unique
-  image   String
-  url     String
-  tags    String[]
+  id        String   @id @default(uuid()) @map("_id")
+  name      String   @unique
+  summary   String   @unique
+  image     String
+  github String?
+  live   String?
+  tags      String[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Seo {
-  id String @id @default(uuid()) @map("_id")
-  title String
-  description String
+  id          String   @id @default(uuid()) @map("_id")
+  title       String   @default("Jean Eudes")
+  description String   @default("Web Developer")
+  image       String   @default("")
+  favicon     String   @default("")
+  tags        String[] @default(["software", "developer", "web", "web developer", "nextjs", "laravel", "php", "coding"])
+
+  twitter  String @default("")
+  github   String @default("https://github.com/jeunih0001")
+  linkedin String @default("https://www.linkedin.com/in/nihangaza-jean-eudes-73a803264/")
+}
+
+model About {
+  id          String @id @default(uuid()) @map("_id")
+  title       String @default("About Me")
+  description String @default("Hey there! I'm a passionate fullstack web developer with a knack for bringing ideas to life through code. My go-to tools are Next.js and Laravel, but I'm flexible and always up for learning new technologies to get the job done. Whether it's building robust backends or crafting sleek, responsive frontends, I love tackling challenges and delivering top-notch solutions. Let's create something amazing together!")
+}
+
+model Tools {
+  id    String @id @default(uuid()) @map("_id")
+  name  String
   image String
-  tags String[]
-
-
-  twitter String?
-  linkedin String?
-
 }

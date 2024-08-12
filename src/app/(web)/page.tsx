@@ -34,8 +34,10 @@ export default async function Home() {
       <main>
         <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center '>
           <div className='container '>
-            <p className='text-lg  font-medium'>👋, I am Jean Eudes</p>
-            <h1 className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></h1>
+            <h1 className='grid'>
+              <span className='text-lg  font-medium'>👋, I am Jean Eudes</span>
+              <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
+            </h1>
             <div className='justify-center ma'>
               <Link className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex whitespace-pre' href={'#contact'}>
                 Let&apos;s work together 👌

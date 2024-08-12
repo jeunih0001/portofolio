@@ -11,7 +11,7 @@ export const Navbar = ({className}: {className?: string}) => {
       <div className='container h-20 flex items-center justify-between'>
         <Link href={'/'} className='py-1 px-2 inline-flex items-center gap-1'>
           <BiUserCircle className='size-6'/>
-          <span className='font-medium text-sm'>JEUNIH</span>
+          <span className='font-semibold text-lg'>JEUNIH</span>
         </Link>
         <div className='flex items-center gap-4'>
           <ThemeSwitcher />

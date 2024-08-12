@@ -3,77 +3,61 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useFormState } from 'react-dom'
 import { sendEmail } from '@/lib/sendEmail'
 import SubmitButton from './SubmitButton'
+import toast from 'react-hot-toast'
+import FormFieldError from './FormFieldError'
+import { Textarea } from './ui/textarea'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
 
 export const ContactForm = () => {
 
 
   const formRef = useRef<HTMLFormElement>(null)
 
-  const [state, formAction] = useFormState(sendEmail, {
-    success: false,
-    message: null,
-    errors: {
-      name: null,
-      email: null,
-      message: null,
-    }
-  })
-
-  const [showError, setShowError] = useState<boolean>(false)
+  const [state, formAction] = useFormState(sendEmail, {})
 
   useEffect(() => {
-    if (state.message) setShowError(true)
-    if (state.success) formRef.current?.reset()
-    
-    setTimeout(() => {
-      setShowError(false)
-    }, 3000);
-
+    if (state.ok) {
+      toast.success(state.message!)
+      formRef.current?.reset()
+    }else{
+      toast.error(state.message!)
+    }
   }, [state])
 
 
 
   return (
     <form ref={formRef} action={formAction}>
-      {showError &&
-        <div className={`fixed z-30 animate-enter_y inset-0 h-fit top-4 border mx-auto w-72 rounded-lg px-4 py-3 shadow-lg flex justify-between gap-4 items-center bg-background text-foreground`}>
-          <p className='capitalize text-sm font-medium'>{state.message}</p>
-          <button className='p-2 rounded-full hover:scale-105 transition-all flex-shrink-0' onClick={() => setShowError(false)}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      }
       <div className='grid gap-6 md:grid-cols-2'>
         <div className='grid gap-2'>
-          <label className='font-medium text-sm text-muted-foreground' htmlFor="name">Name</label>
-          <input
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
+          <Label htmlFor='name'>Name</Label>
+          <Input
+            className='bg-background border-2'
             type="text"
             name="name"
             id="name"
           />
-          {state.errors.name && <p className='text-sm font-medium text-red-400'>{state.errors.name}</p>}
+          <FormFieldError error={state.errors?.name}/>
         </div>
         <div className='grid gap-2'>
-          <label className='font-medium text-sm text-muted-foreground' htmlFor="email">Email</label>
-          <input
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
+          <Label htmlFor="email">Email</Label>
+          <Input
+            className='bg-background border-2'
             type="email"
             name="email"
             id="email"
           />
-          {state.errors.email && <p className='text-sm font-medium text-red-400'>{state.errors.email}</p>}
+          <FormFieldError error={state.errors?.email}/>
         </div>
         <div className='grid gap-2 col-span-full'>
-          <label className='font-medium text-sm text-muted-foreground' htmlFor="message">Message</label>
-          <textarea
+          <Label htmlFor="message">Message</Label>
+          <Textarea
+            className='bg-background border-2'
             rows={4}
-            className='p-2 rounded-md bg-slate-50 text-slate-800 border-2 transition-all outline-none focus:border-primary'
             name="message"
             id="message" />
-          {state.errors.message && <p className='text-sm font-medium text-red-400'>{state.errors.message}</p>}
+          <FormFieldError error={state.errors?.message}/>
         </div>
       </div>
       <div className='mt-8 text-center'>

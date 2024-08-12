@@ -10,11 +10,14 @@ import FormFieldError from './FormFieldError'
 import ImageUploader from './ImageUploader'
 import { Project } from '@prisma/client'
 import { updateProject } from '@/lib/update'
+import { useToast } from '@/lib/useToast'
 
 export default function ProjectEditForm({project}: {project: Project}) {
 
   const [image,setImage] = useState<string>(project.image)
   const [state, action] = useFormState(updateProject, {})
+
+  useToast({state})
 
   return (
     <form action={action} className='space-y-8'>
@@ -30,13 +33,23 @@ export default function ProjectEditForm({project}: {project: Project}) {
           <FormFieldError error={state.errors?.name} />
         </div>
         <div className='grid gap-2'>
-          <Label htmlFor='url'>url</Label>
+          <Label htmlFor='github'>Github URL</Label>
           <Input
-            defaultValue={project.url}
-            name='url'
-            id='url'
+            defaultValue={project.github ?? ''}
+            name='github'
+            id='github'
           />
-          <FormFieldError error={state.errors?.url} />
+          <FormFieldError error={state.errors?.github} />
+
+        </div>
+        <div className='grid gap-2'>
+          <Label htmlFor='live'>Live URL</Label>
+          <Input
+            defaultValue={project.live ?? ''}
+            name='live'
+            id='live'
+          />
+          <FormFieldError error={state.errors?.live} />
 
         </div>
         <div className='grid gap-2 col-span-full'>

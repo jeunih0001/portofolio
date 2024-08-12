@@ -18,6 +18,11 @@ const NAVLINKS = [
     icon: <BiSlideshow className='mr-2'/>
   },
   {
+    name: 'Seo',
+    href: 'seo',
+    icon: <BiSlideshow className='mr-2'/>
+  },
+  {
     name: 'Categories',
     href: 'categories',
     icon: <BiCategory className='mr-2'/>

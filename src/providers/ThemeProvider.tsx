@@ -8,12 +8,12 @@ interface ThemeContextType {
   toggle: ()=>void,
 }
 
-export const ThemeContext = createContext<ThemeContextType>({theme:'light',toggle:()=>{}})
+export const ThemeContext = createContext<ThemeContextType>({theme:'dark',toggle:()=>{}})
 
 export default function ThemeProvider({children}: {children: ReactNode}){
   const [mounted,setMounted] = useState<boolean>(false)
 
-  const [theme,setTheme] = useState<Theme>('light')
+  const [theme,setTheme] = useState<Theme>('dark')
 
   function toggleTheme(){
     setTheme(theme === 'dark' ? 'light': 'dark')

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { projectSchema } from "./schema";
 
-interface FormState {
+export interface FormState {
   status?: 'error' | 'success',
   message?: string,
   errors?: any
@@ -24,16 +24,14 @@ export async function uploadImage(formData: FormData): Promise<string>{
 
 export async function createProject(prevState: FormState, formData: FormData): Promise<FormState>{
 
-
   const rawFormData = {
     name: formData.get('name') as string,
-    url: formData.get('url') as string,
+    github: formData.get('github') as string,
+    live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,
     tags: (formData.get('tags') as string).split('#').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
   }
-
-  
 
   const validatedData = projectSchema.safeParse(rawFormData)
 
@@ -47,15 +45,11 @@ export async function createProject(prevState: FormState, formData: FormData): P
     
   try {
     await prisma.project.create({
-      data: {
-        name: validatedData.data.name,
-        image: validatedData.data.image,
-        summary: validatedData.data.summary,
-        url: validatedData.data.url
-      }
+      data: validatedData.data
     })
 
   } catch (error) {
+    console.error(error)
     return {
       status: 'error',
       message: 'Server error',

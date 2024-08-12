@@ -10,11 +10,14 @@ import SubmitButton from './SubmitButton'
 import { createProject } from '@/lib/store'
 import FormFieldError from './FormFieldError'
 import ImageUploader from './ImageUploader'
+import { useToast } from '@/lib/useToast'
 
 export default function ProjectCreateForm() {
 
   const [image,setImage] = useState<string>('')
   const [state, action] = useFormState(createProject, {})
+
+  useToast({state})
 
   return (
     <form action={action} className='space-y-8'>
@@ -28,13 +31,31 @@ export default function ProjectCreateForm() {
           <FormFieldError error={state.errors?.name} />
         </div>
         <div className='grid gap-2'>
-          <Label htmlFor='url'>url</Label>
+          <Label htmlFor='github'>Github URL</Label>
           <Input
-            name='url'
-            id='url'
+            name='github'
+            id='github'
           />
-          <FormFieldError error={state.errors?.url} />
+          <FormFieldError error={state.errors?.github} />
 
+        </div>
+        <div className='grid gap-2'>
+          <Label htmlFor='live'>Live URL</Label>
+          <Input
+            name='live'
+            id='live'
+          />
+          <FormFieldError error={state.errors?.live} />
+
+        </div>
+        <div className='grid gap-1'>
+          <Label htmlFor='tags'>tags</Label>
+          <Input
+            pattern='^(#([^#]+))+$'
+            name='tags'
+            id='tags'
+          />
+          <FormFieldError error={state.errors?.tags} />
         </div>
         <div className='grid gap-2 col-span-full'>
           <Label htmlFor='image'>Image</Label>
@@ -57,15 +78,6 @@ export default function ProjectCreateForm() {
             id='summary'
           />
           <FormFieldError error={state.errors?.summary} />
-        </div>
-        <div className='grid gap-1'>
-          <Label htmlFor='tags'>tags</Label>
-          <Input
-            pattern='^(#([^#]+))+$'
-            name='tags'
-            id='tags'
-          />
-          <FormFieldError error={state.errors?.tags} />
         </div>
       </div>
       <div>
