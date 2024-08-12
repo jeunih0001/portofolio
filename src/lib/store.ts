@@ -5,7 +5,7 @@ import { z } from "zod"
 import prisma from "./connect"
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { projectSchema } from "./schema";
+import { projectSchema, toolSchema } from "./schema";
 
 export interface FormState {
   status?: 'error' | 'success',
@@ -60,4 +60,37 @@ export async function createProject(prevState: FormState, formData: FormData): P
   revalidatePath('/')
   redirect('/admin/projects')
 
+}
+
+export async function createTool(prevState: FormState, formData: FormData): Promise<FormState>{
+  const rawFormData: Record<string,any> = {
+    name: formData.get('name') as string,
+    image: (formData.get('image') as string) == '' ? null : formData.get('image') as string
+  }
+
+  Object.keys(rawFormData).forEach(key => rawFormData[key] == null && delete rawFormData[key])
+
+  const validation = toolSchema.safeParse(rawFormData)
+  
+
+  if (validation.error) return {
+    status: 'error',
+    message: 'Validation error',
+    errors: validation.error.flatten().fieldErrors
+  }
+
+  try {
+    await prisma.tool.create({
+      data: validation.data
+    })
+  } catch (error) {
+    return {
+      status: 'error',
+      message: 'Server error',
+      errors: null
+    }
+  }
+
+  revalidatePath('/')
+  redirect('/admin/tools')
 }

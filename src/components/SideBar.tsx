@@ -5,6 +5,7 @@ import { BiCategory, BiSlideshow } from 'react-icons/bi'
 import { buttonVariants } from './ui/button'
 import { BsNewspaper } from 'react-icons/bs'
 import { getServerAuthSession } from '@/lib/AuthOptions'
+import { GearIcon, QuestionMarkIcon } from '@radix-ui/react-icons'
 
 const NAVLINKS = [
   {
@@ -18,9 +19,19 @@ const NAVLINKS = [
     icon: <BiSlideshow className='mr-2'/>
   },
   {
+    name: 'Tools',
+    href: 'tools',
+    icon: <GearIcon className='mr-2'/>
+  },
+  {
     name: 'Seo',
     href: 'seo',
     icon: <BiSlideshow className='mr-2'/>
+  },
+  {
+    name: 'About',
+    href: 'about',
+    icon: <QuestionMarkIcon className='mr-2'/>
   },
   {
     name: 'Categories',

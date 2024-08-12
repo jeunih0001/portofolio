@@ -70,8 +70,8 @@ model About {
   description String @default("Hey there! I'm a passionate fullstack web developer with a knack for bringing ideas to life through code. My go-to tools are Next.js and Laravel, but I'm flexible and always up for learning new technologies to get the job done. Whether it's building robust backends or crafting sleek, responsive frontends, I love tackling challenges and delivering top-notch solutions. Let's create something amazing together!")
 }
 
-model Tools {
+model Tool {
   id    String @id @default(uuid()) @map("_id")
   name  String
-  image String
+  image String?
 }

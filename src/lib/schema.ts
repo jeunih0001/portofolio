@@ -24,3 +24,14 @@ export const seoSchema = z.object({
   favicon: z.string(),
   tags: z.array(z.string()),
 })
+
+export const aboutSchema = z.object({
+  title: z.string().min(5, 'Title is required'),
+  description: z.string().min(5, 'Description is required'),
+})
+
+export const toolSchema = z.object({
+  name: z.string().min(5, 'Name is required'),
+  image: z.string().optional(),
+})
+
