@@ -47,7 +47,7 @@ export async function updateProject(formState: FormState,formData: FormData): Pr
     }
   }
 
-  revalidatePath('/','page')
+  revalidatePath('/')
   redirect('/admin/projects')
 }
 
@@ -127,7 +127,7 @@ export async function updateAbout(formState: FormState,formData: FormData): Prom
     }
   }
 
-  revalidatePath('/','page')
+  revalidatePath('/')
 
   return {
     status: 'success',

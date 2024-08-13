@@ -29,7 +29,7 @@ export const ContactForm = () => {
 
   return (
     <form ref={formRef} action={formAction}>
-      <div className='grid gap-6 md:grid-cols-2'>
+      <div className='grid gap-6 items-start md:grid-cols-2'>
         <div className='grid gap-2'>
           <Label htmlFor='name'>Name</Label>
           <Input
