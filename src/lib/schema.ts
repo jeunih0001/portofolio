@@ -31,7 +31,6 @@ export const aboutSchema = z.object({
 })
 
 export const toolSchema = z.object({
-  name: z.string().min(5, 'Name is required'),
-  image: z.string().optional(),
+  name: z.string().min(3, 'Name is required'),
 })
 

@@ -51,7 +51,6 @@ export default function ProjectCreateForm() {
         <div className='grid gap-1'>
           <Label htmlFor='tags'>tags</Label>
           <Input
-            pattern='^(#([^#]+))+$'
             name='tags'
             id='tags'
           />

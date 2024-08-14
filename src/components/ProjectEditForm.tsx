@@ -78,8 +78,7 @@ export default function ProjectEditForm({project}: {project: Project}) {
         <div className='grid gap-1'>
           <Label htmlFor='tags'>tags</Label>
           <Input
-            defaultValue={project.tags.map(tag => `#${tag}`).join(' ')}
-            pattern='^(#([^#]+))+$'
+            defaultValue={project.tags}
             name='tags'
             id='tags'
           />

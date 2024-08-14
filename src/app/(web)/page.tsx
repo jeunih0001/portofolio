@@ -22,7 +22,7 @@ export default async function Home() {
     backgroundRepeat: 'no-repeat'
   }
 
-  const [projects, about, socials] = await Promise.all([
+  const [projects, about, socials, tools] = await Promise.all([
     prisma.project.findMany(),
     prisma.about.findFirst(),
     prisma.seo.findFirst({
@@ -30,7 +30,8 @@ export default async function Home() {
         github: true,
         linkedin: true
       }
-    })
+    }),
+    prisma.tool.findMany()
   ])
 
   return (
@@ -46,31 +47,40 @@ export default async function Home() {
               <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
             </h1>
             <div>
-            <button className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex items-center gap-1 whitespace-pre'>
-                <DownloadIcon className='size-6'/> Download CV
+              <button className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex items-center gap-1 whitespace-pre'>
+                <DownloadIcon className='size-6' /> Download CV
               </button>
             </div>
-          
+
           </div>
         </section>
-        <section className='container py-section space-y-4 text-center'>
+        <section className='container py-section space-y-6 text-center'>
           <h2 className='text_section_header'>{about?.title}</h2>
           <div className='max-w-screen-md mx-auto text-muted-foreground tracking-wide leading-7 '>
-            <p className='inline'>{about?.description}</p>
+            <p className='inline text-center'>{about?.description}</p>
           </div>
-
+          <div className='space-y-4'>
+            <h3 className='text-muted-foreground font-medium text-lg'>These are my goto tools</h3>
+            <div className='flex justify-center gap-4 items-center flex-wrap max-w-screen-sm mx-auto'>
+            {tools.map(tool =>
+              <span className='px-6 tracking-wide font-medium py-1 bg-foreground/10 transition-all cursor-pointer hover:bg-foreground/20 rounded-full' key={tool.id}>
+                {tool.name}
+              </span>
+            )}
+          </div>
+          </div>
         </section>
-        <section className='container py-section space-y-8'>
-          <div className='flex justify-between items-center flex-wrap gap-4'>
+        <section className='container py-section space-y-6'>
+          <div className='flex justify-between items-center flex-wrap gap-2'>
             <h2 className='text_section_header'>My Projects</h2>
-            <Link href={socials?.github ?? ''} className='inline-flex items-center text-sm font-medium tracking-wide gap-1 px-4 py-2 border-2 rounded-md hover:bg-foreground/10 transition-colors'>
+            <Link href={socials?.github ?? ''} className='inline-flex items-center text-sm font-medium tracking-wide gap-1 px-4 py-2 border-2 rounded-md text-accent-foreground bg-accent hover:bg-accent/90 transition-colors'>
               <GitHubLogoIcon />
               <span>View More</span>
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {projects.map((project, index) =>
-              <ProjectCard key={index} project={project} className={index == 0 || index == 3 ? 'lg:col-span-2' : ''} />
+              <ProjectCard key={index} project={project} className={(index == 0 || index % 4 == 0 || (index + 1) % 4 == 0) ? 'sm:col-span-2' : ''} />
             )}
           </div>
         </section>
@@ -81,10 +91,10 @@ export default async function Home() {
               <div className='text-center space-y-6'>
                 <h2 className='text_section_header'>Contact Me</h2>
                 <p className='text-balance'>If you have any questions or are interested in working together, please complete the form below to reach out</p>
-                
+
               </div>
               <ContactForm />
-              
+
             </div>
           </div>
 

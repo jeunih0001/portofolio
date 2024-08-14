@@ -20,7 +20,7 @@ export async function updateProject(formState: FormState,formData: FormData): Pr
     live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,
-    tags: (formData.get('tags') as string).split('#').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
+    tags: (formData.get('tags') as string).split(',').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
   }
 
   const validatedData = projectSchema.safeParse(rawFormData)
@@ -148,10 +148,7 @@ export async function updateTool(formState: FormState,formData: FormData): Promi
 
   const rawFormData: Record<string,any> = {
     name: formData.get('name') as string,
-    image: (formData.get('image') as string) == '' ? null : formData.get('image') as string
   }
-
-  Object.keys(rawFormData).forEach(key => rawFormData[key] == null && delete rawFormData[key])
 
   const validation = toolSchema.safeParse(rawFormData)
 
@@ -169,7 +166,11 @@ export async function updateTool(formState: FormState,formData: FormData): Promi
       data: validation.data
     })
   } catch (error) {
-    
+    return {
+      status: 'error',
+      message: 'Server Error',
+      errors: null
+    }
   }
 
   revalidatePath('/')

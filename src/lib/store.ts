@@ -30,7 +30,7 @@ export async function createProject(prevState: FormState, formData: FormData): P
     live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,
-    tags: (formData.get('tags') as string).split('#').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
+    tags: (formData.get('tags') as string).split(',').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
   }
 
   const validatedData = projectSchema.safeParse(rawFormData)
@@ -65,13 +65,9 @@ export async function createProject(prevState: FormState, formData: FormData): P
 export async function createTool(prevState: FormState, formData: FormData): Promise<FormState>{
   const rawFormData: Record<string,any> = {
     name: formData.get('name') as string,
-    image: (formData.get('image') as string) == '' ? null : formData.get('image') as string
   }
-
-  Object.keys(rawFormData).forEach(key => rawFormData[key] == null && delete rawFormData[key])
-
-  const validation = toolSchema.safeParse(rawFormData)
   
+  const validation = toolSchema.safeParse(rawFormData)
 
   if (validation.error) return {
     status: 'error',
