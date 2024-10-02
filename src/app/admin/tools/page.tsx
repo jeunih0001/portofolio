@@ -46,7 +46,7 @@ export default async function page() {
                       <FaPencil className='size-5' />
                       <span>Edit</span>
                     </Link>
-                    <DeleteRecordModal model="Project" record={tool.id}>
+                    <DeleteRecordModal model="Tool" record={tool.id}>
                       <span className={buttonVariants({variant: 'destructive', size: 'sm'})}>
                       <BiTrash className='size-5'/>
                       <span>Delete</span>
