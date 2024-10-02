@@ -64,7 +64,7 @@ export default async function Home() {
         </section>
         <section className='container my-section space-y-8 text-center'>
           <h2 className='text_section_header'>Tools & Frameworks</h2>
-          <div className='grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] border-collapse gap-8'>
+          <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] border-collapse gap-4'>
             {tools.map((tool,index) =>
               <div className="grid place-content-center gap-6 bg-foreground/5 px-6 shadow border py-10 border-foreground/5 cursor-pointer rounded-xl" key={index}>
                 {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-24 mx-auto aspect-square object-contain'/>}
