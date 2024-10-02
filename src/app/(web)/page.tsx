@@ -67,7 +67,7 @@ export default async function Home() {
           <div className='grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] border-collapse gap-8'>
             {tools.map((tool,index) =>
               <div className="grid place-content-center gap-6 bg-foreground/5 px-6 shadow border py-10 border-foreground/5 cursor-pointer rounded-xl" key={index}>
-                {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-40 mx-auto aspect-square object-contain'/>}
+                {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-24 mx-auto aspect-square object-contain'/>}
                 <span className='text-center font-medium uppercase tracking-wide'>{tool.name}</span>
               </div>
             )}
