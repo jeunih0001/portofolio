@@ -8,6 +8,7 @@ import FormFieldError from './FormFieldError'
 import { Textarea } from './ui/textarea'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
+import { useToast } from '@/hooks/useToast'
 
 export const ContactForm = () => {
 
@@ -16,15 +17,7 @@ export const ContactForm = () => {
 
   const [state, formAction] = useFormState(sendEmail, {})
 
-  useEffect(() => {
-    if (state.ok) {
-      toast.success(state.message!)
-      formRef.current?.reset()
-    }else{
-      toast.error(state.message!)
-    }
-  }, [state])
-
+  useToast({state})
 
 
   return (
@@ -61,7 +54,7 @@ export const ContactForm = () => {
         </div>
       </div>
       <div className='mt-8 text-center'>
-        <SubmitButton message='Send Message' base/>
+        <SubmitButton>Send Message</SubmitButton>
       </div>
     </form>
   )

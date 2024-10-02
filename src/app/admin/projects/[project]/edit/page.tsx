@@ -1,5 +1,5 @@
-import ProjectEditForm from "@/components/ProjectEditForm"
-import prisma from "@/lib/connect"
+import ProjectEditForm from "@/components/project/ProjectEditForm"
+import prisma from "@/lib/prisma"
 
 interface Props {
   params: {
@@ -20,7 +20,7 @@ export default async function page({params}: Props) {
       <div>
         <h2 className="text-2xl font-semibold">Edit {project.name}</h2>
       </div>
-      <div>
+      <div className="d-card">
         <ProjectEditForm project={project}/>
       </div>
     </div>

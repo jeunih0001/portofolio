@@ -13,39 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id          String  @id @default(uuid()) @map("_id")
-  slug        String  @unique
-  name        String  @unique
-  description String?
-  blogs       Blog[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Blog {
-  id          String   @id @default(uuid()) @map("_id")
-  slug        String   @unique
-  title       String
-  summary     String
-  content     String
-  isPublished Boolean  @default(false)
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Project {
-  id        String   @id @default(uuid()) @map("_id")
-  name      String   @unique
-  summary   String   @unique
-  image     String
-  github String?
-  live   String?
-  tags      String[]
+  id      String   @id @default(uuid()) @map("_id")
+  name    String   @unique
+  summary String   @unique
+  image   String
+  github  String?
+  live    String?
+  tags    String[]
+  status  String   @default("published")
+  order   Int      @default(1)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -71,6 +48,9 @@ model About {
 }
 
 model Tool {
-  id    String @id @default(uuid()) @map("_id")
-  name  String @unique
+  id          String  @id @default(uuid()) @map("_id")
+  name        String  @unique
+  icon        String?
+  description String?
+  order       Int     @default(0)
 }

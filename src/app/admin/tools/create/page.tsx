@@ -6,7 +6,7 @@ export default function page() {
       <div>
         <h2 className="text-2xl font-semibold">New Tool</h2>
       </div>
-      <div>
+      <div className="d-card ">
         <ToolCreateForm />
       </div>
     </div>

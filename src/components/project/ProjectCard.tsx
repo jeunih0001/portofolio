@@ -16,10 +16,7 @@ export default function ProjectCard({project,className}: Readonly<Props>) {
       <div className="col-start-1 row-start-1 grid ">
         <Image width={0} height={0} className="h-[250px] w-full object-cover" src={project.image ?? ''} alt={project.name} />
       </div>
-      <div className='col-start-1 row-start-1 bg-foreground/30'>
-
-      </div>
-      <div className='col-start-1 row-start-1 grid content-end bg-gradient-to-b from-transparent to-foreground text-background px-4'>
+      <div className='col-start-1 row-start-1 bg-black/30 grid content-end bg-gradient-to-b from-transparent to-black text-gray-50 px-4'>
         <h3 className='text-xl font-semibold capitalize'>{project.name}</h3>
         <div className='pt-2 pb-4 space-y-2'>
           <p className='text-sm'>{project.summary}</p>
@@ -27,11 +24,11 @@ export default function ProjectCard({project,className}: Readonly<Props>) {
         </div>
       </div>
       <div className='opacity-0 transition-all duration-300 delay-100 group-hover:opacity-100 col-start-1 row-start-1 self-start justify-self-end grid gap-2 m-2'>
-          {project.github && <Link className='px-2 py-1 bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors border text-foreground rounded-lg inline-flex justify-center items-center gap-1 font-semibold tracking-wide text-xs' href={project.github}>
+          {project.github && <Link target='_blank' className='px-2 py-1 bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors border text-foreground rounded-lg inline-flex justify-center items-center gap-1 font-semibold tracking-wide text-xs' href={project.github}>
           <GitHubLogoIcon />
            Github
            </Link>}
-          {project.live && <Link className='px-2 py-1 bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors border text-foreground rounded-lg inline-flex justify-center items-center gap-1 font-semibold tracking-wide text-xs' href={project.live}>
+          {project.live && <Link target='_blank' className='px-2 py-1 bg-background/80 hover:bg-primary hover:text-primary-foreground transition-colors border text-foreground rounded-lg inline-flex justify-center items-center gap-1 font-semibold tracking-wide text-xs' href={project.live}>
           <FaExternalLinkAlt /> 
           Live site </Link>}
       </div>

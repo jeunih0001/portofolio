@@ -1,28 +1,22 @@
-import Spinner from '@/components/Spinner'
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { Button, ButtonProps } from '@/components/ui/button'
+import React, { PropsWithChildren } from 'react'
 import { useFormStatus } from 'react-dom'
+import { BiLoader } from 'react-icons/bi'
 
-type ActionType = 'create' | 'read' | 'update' | 'delete'
+interface Props extends PropsWithChildren {
+  
+}
 
-export default function SubmitButton({message , action = 'create' , base = false}: {message: string , action?: ActionType , base?: boolean}) {
+export default function SubmitButton({children, disabled, ...props}: Props & ButtonProps) {
   
   const { pending } = useFormStatus()
 
-  
+  const loading = pending || disabled
+
   return (
-    <Button 
-      variant={action === 'delete' ? 'destructive' :
-        action === 'update' ? 'outline': 
-        'default'
-    } disabled={pending} type='submit' size={base ? 'default' : 'sm'}>
-      {pending &&
-        <Spinner className='size-3 mr-1' />
-      }
-      <span className='capitalize'>
-        {message}
-      </span>
-      
+    <Button disabled={loading} {...props}>
+      {loading && <BiLoader className='animate-spin size-5'/>}
+      {children}
     </Button>
   )
 }

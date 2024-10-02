@@ -1,4 +1,4 @@
-import prisma from '@/lib/connect'
+import prisma from '@/lib/prisma'
 import ThemeProvider from '@/providers/ThemeProvider'
 import { Metadata } from 'next'
 import React, { ReactNode } from 'react'

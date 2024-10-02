@@ -1,5 +1,5 @@
 import ToolEditForm from "@/components/ToolEditForm"
-import prisma from "@/lib/connect"
+import prisma from "@/lib/prisma"
 
 interface Props {
   params: {
@@ -19,7 +19,7 @@ export default async function page({params}: Props) {
       <div>
         <h2 className="text-2xl font-semibold">Edit {tool?.name}</h2>
       </div>
-      <div>
+      <div className="d-card">
       {tool && <ToolEditForm tool={tool}/>}
       </div>
     </div>

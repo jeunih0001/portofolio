@@ -57,6 +57,20 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        d: {
+          background: '#ededef',
+          foreground: '#2d363a',
+          card: '#fff',
+          muted: '#c5d1d9',
+          primary: {
+            DEFAULT: '#181f30',
+            foreground: '#a8b0bd',
+          },
+          accent: {
+            DEFAULT: '#4b58d0',
+            foreground: '#f5f5f5',
+          },
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

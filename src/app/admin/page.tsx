@@ -1,4 +1,4 @@
-import { getServerAuthSession } from '@/lib/AuthOptions'
+import { getServerAuthSession } from '@/lib/authOptions'
 import React from 'react'
 import { BiDoorOpen } from 'react-icons/bi'
 
