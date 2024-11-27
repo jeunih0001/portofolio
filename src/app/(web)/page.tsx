@@ -86,7 +86,7 @@ export default async function Home() {
           <div className='flex justify-between items-center flex-wrap gap-2'>
             <h2 className='text_section_header'>My Projects</h2>
             <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
-              <span>jeunih0001</span>
+              <span>Github</span>
               <GitHubLogoIcon />
             </Link>
           </div>
