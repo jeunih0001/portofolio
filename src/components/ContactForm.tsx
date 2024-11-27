@@ -54,7 +54,7 @@ export const ContactForm = () => {
         </div>
       </div>
       <div className='mt-8 text-center'>
-        <SubmitButton>Send Message</SubmitButton>
+        <SubmitButton size={'lg'} className='text-base py-3 !h-auto'>Send Message</SubmitButton>
       </div>
     </form>
   )

@@ -2,12 +2,13 @@ import { ContactForm } from '@/components/ContactForm'
 import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/Navbar'
 import ProjectCard from '@/components/project/ProjectCard';
+import { buttonVariants } from '@/components/ui/button';
 import prisma from '@/lib/prisma';
 import { ArrowDownIcon, DownloadIcon, ExternalLinkIcon, GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link'
 import React, { CSSProperties } from 'react'
-import { BiEnvelope } from 'react-icons/bi';
+import { BiChevronRight, BiCode, BiEnvelope } from 'react-icons/bi';
 import { FaReact } from 'react-icons/fa';
 import { MdConnectWithoutContact } from "react-icons/md";
 
@@ -45,13 +46,13 @@ export default async function Home() {
       <main>
         <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center '>
           <div className='container '>
-            <h1 className='grid'>
-              <span className='text-lg  font-medium'>👋, I am Jean Eudes</span>
-              <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
-            </h1>
+            <h2 className='grid'>
+              <span className='text-xl'>👋, I am Jean Eudes</span>
+              <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold '><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
+            </h2>
             <div>
-              <a href='#contact' className='bg-primary text-primary-foreground py-3 px-6 inline-flex items-center rounded-full gap-2 font-medium text-lg'>
-                Contact Me
+              <a href='#contact' className={buttonVariants({size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
+                <span>Contact Me</span>
                 <BiEnvelope className='size-6' /> 
               </a>
             </div>
@@ -67,7 +68,8 @@ export default async function Home() {
               </div>
               <hr />
             </div>
-            <div>
+            <div className='grid gap-4'>
+              <h2 className='text-foreground/80 inline-flex items-end gap-3 justify-end'><BiCode className='size-5'/>Tools and frameworks</h2>
               <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'>
                 {tools.map((tool, index) =>
                   <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 hover:z-10 group transition-all duration-300 hover:bg-background relative" key={index}>
@@ -83,9 +85,9 @@ export default async function Home() {
         <section className='container my-section space-y-16'>
           <div className='flex justify-between items-center flex-wrap gap-2'>
             <h2 className='text_section_header'>My Projects</h2>
-            <Link href={socials?.github ?? ''} className='inline-flex items-center text-sm font-medium tracking-wide gap-1 px-4 py-2 border-2 rounded-md text-accent-foreground bg-accent hover:bg-accent/90 transition-colors'>
+            <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
+              <span>jeunih001</span>
               <GitHubLogoIcon />
-              <span>View More</span>
             </Link>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">

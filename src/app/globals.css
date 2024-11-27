@@ -95,7 +95,7 @@
   }
 
   .text_section_header {
-    @apply text-3xl lg:text-5xl tracking-wide font-semibold;
+    @apply text-3xl lg:text-5xl tracking-wide font-bold;
   }
   .py-section {
     @apply py-16 lg:py-24

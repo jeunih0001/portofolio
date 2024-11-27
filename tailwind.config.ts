@@ -17,9 +17,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        special: 'var(--font-anton)'
-      },
       spacing: {
         navbar: '5rem',
       },
