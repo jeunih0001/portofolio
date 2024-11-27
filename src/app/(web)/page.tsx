@@ -39,7 +39,11 @@ export default async function Home() {
         linkedin: true
       }
     }),
-    prisma.tool.findMany()
+    prisma.tool.findMany({
+      orderBy: {
+        order: 'asc',
+      }
+    })
   ])
 
   return (
