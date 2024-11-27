@@ -61,7 +61,7 @@ export default async function Home() {
         </section>
         <section className='container'>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className='text-balance'>
+            <div className='text-balance text-center md:text-left'>
               <h2 className='text_section_header capitalize'>{about?.title}</h2>
               <div className='text-foreground/80 tracking-wide leading-7 mt-4 mb-16'>
                 <p className='inline text-center'>{about?.description}</p>
@@ -69,7 +69,7 @@ export default async function Home() {
               <hr />
             </div>
             <div className='grid gap-4'>
-              <h2 className='text-foreground/80 inline-flex items-center gap-1 justify-end text-lg'><BiCode className='size-5'/>Tools and frameworks</h2>
+              <h2 className='text-foreground/80 inline-flex items-center gap-1 md:justify-end text-lg font-bold'><BiCode className='size-5'/>Tools and frameworks</h2>
               <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'>
                 {tools.map((tool, index) =>
                   <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 hover:z-10 group transition-all duration-300 hover:bg-background relative" key={index}>
@@ -83,7 +83,7 @@ export default async function Home() {
           </div>
         </section>
         <section className='container my-section gap-y-16 grid grid-cols-2 items-start'>
-          <h2 className='text_section_header'>My Projects</h2>
+          <h2 className='text_section_header col-span-full sm:col-span-1'>My Projects</h2>
           <div className='flex justify-center sm:justify-end order-3 col-span-full sm:col-span-1 sm:order-none'>
           <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
             <span>Github</span>
