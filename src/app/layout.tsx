@@ -10,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className='scroll-smooth'>
+    <html lang="en" className='scroll-smooth dark'>
         <body className={`${fontSans.className} scroll-smooth antialiased text-foreground`} suppressHydrationWarning>
           {children}
           <Toaster />
