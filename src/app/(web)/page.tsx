@@ -68,7 +68,7 @@ export default async function Home() {
             <div>
               <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'>
                 {tools.map((tool, index) =>
-                  <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 group transition-all duration-300 hover:bg-background relative" key={index}>
+                  <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 hover:z-10 group transition-all duration-300 hover:bg-background relative" key={index}>
                     {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-24 mx-auto aspect-square object-contain' />}
                     <div className="absolute inset-0 w-fit h-fit py-2 px-4 font-medium uppercase text-sm rounded-full bg-foreground text-background/80 -top-4  mx-auto scale-30 opacity-0 group-hover:opacity-100 duration-300 transition-all group-hover:scale-75">{tool.name}</div>
                   </div>
