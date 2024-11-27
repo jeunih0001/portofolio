@@ -44,7 +44,7 @@ export default async function Home() {
         <Navbar className='absolute w-full' />
       </header>
       <main>
-        <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center relative'>
+        <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center'>
           <div className='container'>
             <h2 className='grid'>
               <span className='text-xl'>👋, I am Jean Eudes</span>
