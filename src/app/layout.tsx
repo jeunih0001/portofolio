@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth'>
         <body className={`${anton.variable} ${fontSans.className} scroll-smooth antialiased text-foreground`} suppressHydrationWarning>
           {children}
           <Toaster />

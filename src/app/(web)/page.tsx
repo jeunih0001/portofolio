@@ -7,6 +7,7 @@ import { ArrowDownIcon, DownloadIcon, ExternalLinkIcon, GitHubLogoIcon, LinkedIn
 import Image from 'next/image';
 import Link from 'next/link'
 import React, { CSSProperties } from 'react'
+import { BiEnvelope } from 'react-icons/bi';
 import { FaReact } from 'react-icons/fa';
 import { MdConnectWithoutContact } from "react-icons/md";
 
@@ -49,9 +50,10 @@ export default async function Home() {
               <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold font-special tracking-wider !leading-[1.1]'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
             </h1>
             <div>
-              <button className='py-3 px-4 font-medium hover:px-8 transition-all hover:shadow-2xl border-2 border-foreground hover:bg-foreground/10 rounded-lg inline-flex items-center gap-1 whitespace-pre'>
-                <DownloadIcon className='size-6' /> Download CV
-              </button>
+              <a href='#contact' className='bg-primary text-primary-foreground py-3 px-6 inline-flex items-center rounded-full gap-2 font-medium text-lg'>
+                Contact Me
+                <BiEnvelope className='size-6' /> 
+              </a>
             </div>
 
           </div>
