@@ -56,24 +56,29 @@ export default async function Home() {
 
           </div>
         </section>
-        <section className='container my-section space-y-8 text-center'>
-          <h2 className='text_section_header capitalize'>{about?.title}</h2>
-          <div className='max-w-screen-md mx-auto text-muted-foreground tracking-wide leading-7 '>
-            <p className='inline text-center'>{about?.description}</p>
-          </div>
-        </section>
-        <section className='container my-section space-y-8 text-center'>
-          <h2 className='text_section_header'>Tools & Frameworks</h2>
-          <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] border-collapse gap-4'>
-            {tools.map((tool,index) =>
-              <div className="grid place-content-center gap-6 bg-foreground/5 px-6 shadow border py-10 border-foreground/5 cursor-pointer rounded-xl" key={index}>
-                {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-24 mx-auto aspect-square object-contain'/>}
-                <span className='text-center font-medium uppercase tracking-wide'>{tool.name}</span>
+        <section className='container'>
+          <div className="grid grid-cols-2 gap-12 items-center">
+            <div className='text-balance'>
+              <h2 className='text_section_header capitalize'>{about?.title}</h2>
+              <div className='text-foreground/80 tracking-wide leading-7 mt-4 mb-16'>
+                <p className='inline text-center'>{about?.description}</p>
               </div>
-            )}
+              <hr />
+            </div>
+            <div>
+              <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'>
+                {tools.map((tool, index) =>
+                  <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 group transition-all duration-300 hover:bg-background relative" key={index}>
+                    {tool.icon && <Image src={tool.icon} width={0} height={0} alt='image' className='w-full max-w-24 mx-auto aspect-square object-contain' />}
+                    <div className="absolute inset-0 w-fit h-fit py-2 px-4 font-medium uppercase text-sm rounded-full bg-foreground text-background/80 -top-4  mx-auto scale-30 opacity-0 group-hover:opacity-100 duration-300 transition-all group-hover:scale-75">{tool.name}</div>
+                  </div>
+                )}
+              </div>
+            </div>
+
           </div>
         </section>
-        <section className='container my-section space-y-8'>
+        <section className='container my-section space-y-16'>
           <div className='flex justify-between items-center flex-wrap gap-2'>
             <h2 className='text_section_header'>My Projects</h2>
             <Link href={socials?.github ?? ''} className='inline-flex items-center text-sm font-medium tracking-wide gap-1 px-4 py-2 border-2 rounded-md text-accent-foreground bg-accent hover:bg-accent/90 transition-colors'>
@@ -90,10 +95,10 @@ export default async function Home() {
 
         <section id='contact' style={LSTYLES} className='my-section '>
           <div className='px-base bg-background/50'>
-            <div className='space-y-8 max-w-screen-md mx-auto rounded-lg '>
+            <div className='space-y-16 max-w-screen-sm mx-auto rounded-lg '>
               <div className='text-center space-y-4'>
                 <h2 className='text_section_header'>Contact Me</h2>
-                <p className='text-balance'>If you have any questions or are interested in working together, please complete the form below to reach out</p>
+                <p className='text-balance text-foreground/80'>If you have any questions or are interested in working together, please complete the form below to reach out</p>
               </div>
               <ContactForm />
             </div>

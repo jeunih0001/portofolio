@@ -15,9 +15,6 @@ export const Navbar = ({className}: {className?: string}) => {
         </Link>
         <div className='flex items-center gap-4'>
           <ThemeSwitcher />
-          <div className='hidden md:block'>
-            <a href="#contact" className={buttonVariants({className: 'px-8 h-auto py-3'})}>Contact Me</a>
-          </div>
         </div>
       </div>
     </nav>

@@ -24,9 +24,9 @@ export const ContactForm = () => {
     <form ref={formRef} action={formAction}>
       <div className='grid gap-6 items-start md:grid-cols-2'>
         <div className='grid gap-2'>
-          <Label htmlFor='name'>Name</Label>
+          <Label htmlFor='name' className='relative z-10 px-2 mx-2 bg-background justify-self-start'>Name</Label>
           <Input
-            className='bg-background border-2'
+            className='bg-background border transition-all border-foreground/40 -mt-4 h-12'
             type="text"
             name="name"
             id="name"
@@ -34,9 +34,9 @@ export const ContactForm = () => {
           <FormFieldError error={state.errors?.name}/>
         </div>
         <div className='grid gap-2'>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className='relative z-10 px-2 mx-2 bg-background justify-self-start'>Email</Label>
           <Input
-            className='bg-background border-2'
+            className='bg-background border transition-all outline-none focus:ring-0 focus:outline-none border-foreground/40 -mt-4 h-12'
             type="email"
             name="email"
             id="email"
@@ -44,9 +44,9 @@ export const ContactForm = () => {
           <FormFieldError error={state.errors?.email}/>
         </div>
         <div className='grid gap-2 col-span-full'>
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message" className='relative z-10 px-2 mx-2 bg-background justify-self-start'>Message</Label>
           <Textarea
-            className='bg-background border-2'
+            className='bg-background border transition-all outline-none focus:ring-0 focus:outline-none border-foreground/40 -mt-4'
             rows={4}
             name="message"
             id="message" />

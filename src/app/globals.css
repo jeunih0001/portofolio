@@ -98,11 +98,11 @@
     @apply text-3xl lg:text-5xl tracking-wide font-semibold;
   }
   .py-section {
-    @apply py-16 lg:py-12
+    @apply py-16 lg:py-24
   }
 
   .my-section {
-    @apply my-16 lg:my-20
+    @apply my-16 lg:my-24
   }
 
   .d-card {
