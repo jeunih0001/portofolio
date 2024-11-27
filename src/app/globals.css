@@ -77,10 +77,9 @@
 }
 
 @layer utilities {
-  .hover_underline {
-    @apply relative before:content-[''] hover:before:w-full before:transition-all before:absolute before:w-0 before:h-0.5 before:duration-300 before:bg-foreground before:left-0 before:bottom-0 before:right-0 before:mx-auto
+  .stack {
+    @apply col-start-1 row-start-1
   }
-
   .px-base {
     @apply px-4 lg:px-8
   }

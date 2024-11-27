@@ -44,8 +44,8 @@ export default async function Home() {
         <Navbar className='absolute w-full' />
       </header>
       <main>
-        <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center '>
-          <div className='container '>
+        <section style={STYLES} className='pt-navbar h-dvh grid content-center text-center relative'>
+          <div className='container'>
             <h2 className='grid'>
               <span className='text-xl'>👋, I am Jean Eudes</span>
               <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold tracking-tight'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
@@ -60,7 +60,7 @@ export default async function Home() {
           </div>
         </section>
         <section className='container'>
-          <div className="grid grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className='text-balance'>
               <h2 className='text_section_header capitalize'>{about?.title}</h2>
               <div className='text-foreground/80 tracking-wide leading-7 mt-4 mb-16'>
