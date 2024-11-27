@@ -51,6 +51,5 @@ model Tool {
   id          String  @id @default(uuid()) @map("_id")
   name        String  @unique
   icon        String?
-  description String?
   order       Int     @default(0)
 }

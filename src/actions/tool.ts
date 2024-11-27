@@ -7,10 +7,10 @@ import { ActionState } from "./global"
 import { toolSchema } from "@/models/tool"
 
 export async function createTool(state: ActionState, formData: FormData): Promise<ActionState>{
-  const rawFormData: Record<string,string> = {
+  const rawFormData = {
     name: formData.get('name') as string,
     icon: formData.get('icon') as string,
-    description: formData.get('description') as string,
+    order: parseInt(formData.get('order') as string),
   }
   
   const validation = toolSchema.safeParse(rawFormData)
@@ -43,10 +43,10 @@ export async function updateTool(state: ActionState,formData: FormData): Promise
 
   
 
-  const rawFormData: Record<string,string> = {
+  const rawFormData = {
     name: formData.get('name') as string,
     icon: formData.get('icon') as string,
-    description: formData.get('description') as string,
+    order: parseInt(formData.get('order') as string),
   }
 
   const validation = toolSchema.safeParse(rawFormData)

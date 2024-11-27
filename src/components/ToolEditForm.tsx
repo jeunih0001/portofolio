@@ -33,16 +33,20 @@ export default function ToolEditForm({tool}: Props) {
           <Input name="name" id="name" defaultValue={tool.name}/>
           <FormFieldError error={state.errors?.name}/>
         </div>
+        <div className='grid gap-2'>
+          <Label htmlFor='order'>Order</Label>
+          <Input
+            defaultValue={tool.order}
+            name='order'
+            id='order'
+          />
+          <FormFieldError error={state.errors?.order} />
+        </div>
         <div className="grid gap-2">
           <Label htmlFor="icon">Icon</Label>
           <ImageUploader existingImage={tool.icon ?? ''} setField={setIcon}/>
           <Input type="hidden" name="icon" id="icon" value={icon} readOnly/>
           <FormFieldError error={state.errors?.icon}/>
-        </div>
-        <div className="grid gap-2 col-span-2">
-          <Label htmlFor="icon">Description</Label>
-          <Textarea name="description" id="description" defaultValue={tool.description ?? ''}/>
-          <FormFieldError error={state.errors?.description}/>
         </div>
       </div>
       <div>
