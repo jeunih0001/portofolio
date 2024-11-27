@@ -27,7 +27,11 @@ export default async function Home() {
   }
 
   const [projects, about, socials, tools] = await Promise.all([
-    prisma.project.findMany(),
+    prisma.project.findMany({
+      orderBy: {
+        order: 'asc'
+      }
+    }),
     prisma.about.findFirst(),
     prisma.seo.findFirst({
       select: {

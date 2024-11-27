@@ -6,5 +6,6 @@ export const projectSchema = z.object({
   summary: z.string().min(5 , {message: 'minimum of 5 characters'}),
   tags: z.array(z.string()),
   github: z.string(),
+  order: z.number(),
   live: z.string(),
 })

@@ -10,13 +10,14 @@ export async function createProject(state: ActionState, formData: FormData): Pro
 
   const rawFormData = {
     name: formData.get('name') as string,
+    order: parseInt(formData.get('order') as string),
     github: formData.get('github') as string,
     live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,
     tags: (formData.get('tags') as string).split(',').map((tag: string) => tag.trim()).filter(tag => tag !== null && tag !== ''),
   }
-
+  
   const validatedData = projectSchema.safeParse(rawFormData)
 
   if (validatedData.error)
@@ -52,6 +53,7 @@ export async function updateProject(state: ActionState,formData: FormData): Prom
   const rawFormData = {
     name: formData.get('name') as string,
     github: formData.get('github') as string,
+    order: parseInt(formData.get('order') as string),
     live: formData.get('live') as string,
     image: formData.get('image') as string,
     summary: formData.get('summary') as string,

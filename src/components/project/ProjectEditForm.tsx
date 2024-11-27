@@ -32,6 +32,15 @@ export default function ProjectEditForm({project}: {project: Project}) {
           <FormFieldError error={state.errors?.name} />
         </div>
         <div className='grid gap-2'>
+          <Label htmlFor='order'>Order</Label>
+          <Input
+            defaultValue={project.order}
+            name='order'
+            id='order'
+          />
+          <FormFieldError error={state.errors?.order} />
+        </div>
+        <div className='grid gap-2'>
           <Label htmlFor='github'>Github URL</Label>
           <Input
             defaultValue={project.github ?? ''}
