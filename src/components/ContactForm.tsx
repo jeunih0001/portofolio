@@ -9,6 +9,7 @@ import { Textarea } from './ui/textarea'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { useToast } from '@/hooks/useToast'
+import { BiEnvelope } from 'react-icons/bi'
 
 export const ContactForm = () => {
 
@@ -54,7 +55,7 @@ export const ContactForm = () => {
         </div>
       </div>
       <div className='mt-8 text-center'>
-        <SubmitButton size={'lg'} className='text-base py-3 !h-auto'>Send Message</SubmitButton>
+        <SubmitButton size={'lg'} className='text-base py-3 !h-auto gap-2'>Send Message <BiEnvelope className='size-6' /> </SubmitButton>
       </div>
     </form>
   )
