@@ -69,7 +69,7 @@ export default async function Home() {
               <hr />
             </div>
             <div className='grid gap-4'>
-              <h2 className='text-foreground/80 inline-flex items-end gap-3 justify-end'><BiCode className='size-5'/>Tools and frameworks</h2>
+              <h2 className='text-foreground/80 inline-flex items-center gap-1 justify-end text-lg'><BiCode className='size-5'/>Tools and frameworks</h2>
               <div className='grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'>
                 {tools.map((tool, index) =>
                   <div className="grid place-content-center gap-6 bg-foreground/[0.04] px-6 shadow py-6 cursor-pointer border border-background hover:scale-125 hover:z-10 group transition-all duration-300 hover:bg-background relative" key={index}>
@@ -86,7 +86,7 @@ export default async function Home() {
           <div className='flex justify-between items-center flex-wrap gap-2'>
             <h2 className='text_section_header'>My Projects</h2>
             <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
-              <span>jeunih001</span>
+              <span>jeunih0001</span>
               <GitHubLogoIcon />
             </Link>
           </div>
