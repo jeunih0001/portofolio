@@ -48,7 +48,7 @@ export default async function Home() {
           <div className='container '>
             <h2 className='grid'>
               <span className='text-xl'>👋, I am Jean Eudes</span>
-              <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-bold tracking-tight'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
+              <span className='mb-16 mt-4 grid text-5xl md:text-8xl font-extrabold tracking-tight'><span>FullStack</span><span className='text-shadow'  >Web Developer</span></span>
             </h2>
             <div>
               <a href='#contact' className={buttonVariants({size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
