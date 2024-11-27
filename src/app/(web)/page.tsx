@@ -82,15 +82,15 @@ export default async function Home() {
 
           </div>
         </section>
-        <section className='container my-section space-y-16'>
-          <div className='flex justify-between items-center flex-wrap gap-2'>
-            <h2 className='text_section_header'>My Projects</h2>
-            <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
-              <span>Github</span>
-              <GitHubLogoIcon />
-            </Link>
+        <section className='container my-section gap-y-16 grid grid-cols-2 items-start'>
+          <h2 className='text_section_header'>My Projects</h2>
+          <div className='flex justify-center sm:justify-end order-3 col-span-full sm:col-span-1 sm:order-none'>
+          <Link href={socials?.github ?? ''} className={buttonVariants({variant: 'accent' , size: 'lg' , className: '!text-base !h-auto py-3 gap-2'})}>
+            <span>Github</span>
+            <GitHubLogoIcon />
+          </Link>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 col-span-full">
             {projects.map((project, index) =>
               <ProjectCard key={index} project={project} className={(index == 0 || index % 4 == 0 || (index + 1) % 4 == 0) ? 'sm:col-span-2' : ''} />
             )}
@@ -110,7 +110,7 @@ export default async function Home() {
 
         </section>
 
-        <Footer />
+        <Footer socials={socials}/>
       </main>
     </>
   )
