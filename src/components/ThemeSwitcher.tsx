@@ -7,7 +7,7 @@ import { ThemeContext } from '@/providers/ThemeProvider'
 export default function ThemeSwitcher() {
   const { theme , toggle } = useContext(ThemeContext)
   return (
-    <button onClick={toggle} className='relative flex items-center border border-foreground/30 rounded-full' suppressHydrationWarning>
+    <button onClick={toggle} className='relative flex items-center border-2 border-foreground/30 rounded-full' suppressHydrationWarning>
       <div className="sr-only">Switch theme</div>
       <span className={`absolute h-full aspect-square rounded-full transition-all ${theme === 'light' ?' translate-x-0 bg-primary/20 te': 'translate-x-full bg-secondary'}`}></span>
       <span className='p-2 relative text-primary'>
